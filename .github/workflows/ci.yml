@@ -11,7 +11,7 @@ env:
   # in composer.json. A default-branch clone resolves to a different version and
   # composer install fails before any test runs.
   CORE_REPO: https://github.com/msstc4php/vo-base.git
-  CORE_BRANCH: feat/value-objects-library
+  CORE_BRANCH: main
 
 jobs:
   full:
