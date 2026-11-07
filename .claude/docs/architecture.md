@@ -42,8 +42,8 @@ job, not its.
 ```
 src/
 ├── Shared/Money/   MoneyScale, MoneyContextRouter, MoneyMappingException
-├── Orm/            37 DBAL types, 2 abstract bases, TypeRegistrar
+├── Orm/            38 DBAL types, 2 abstract bases, TypeRegistrar
 │   └── Embeddable/ MoneyAmount, PreciseMoneyAmount
-└── Odm/            37 ODM types, 2 abstract bases, TypeRegistrar
+└── Odm/            38 ODM types, 2 abstract bases, TypeRegistrar
     └── Embeddable/ MoneyAmount, PreciseMoneyAmount
 ```

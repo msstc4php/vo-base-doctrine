@@ -77,7 +77,6 @@ final class NonCanonicalSamples
             'vo_bic' => Bic::from('DEUTDEFF500'),
             'vo_bounded_string' => new BoundedString('abc', 1, 10),
             'vo_cidr' => Cidr::from('2001:db8::/32'),
-            'vo_ip_range' => IpRange::from('2001:db8::1-2001:db8::ff'),
             'vo_class_string' => ClassString::from(DateRange::class),
             'vo_credit_card_number' => CreditCardNumber::from('378282246310005'),
             // The second of the two identical 01:30 instants of the US fall-back,
@@ -96,6 +95,8 @@ final class NonCanonicalSamples
             'vo_iban' => Iban::from('MT84MALT011000012345MTLCAST001S'),
             'vo_int_range' => new IntRange(-5, 5),
             'vo_ip_address' => IpAddress::fromString('2001:db8:85a3::8a2e:370:7334'),
+            // The longest canonical range: exactly the 79-character column.
+            'vo_ip_range' => IpRange::from('ffff:ffff:ffff:ffff:ffff:ffff:ffff:fffe-ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff'),
             'vo_ipv4_address' => Ipv4Address::from('255.255.255.255'),
             'vo_ipv6_address' => Ipv6Address::from('2001:db8:85a3::8a2e:370:7334'),
             'vo_json_string' => JsonString::from('{"a":[1,2,{"б":"ю"}]}'),

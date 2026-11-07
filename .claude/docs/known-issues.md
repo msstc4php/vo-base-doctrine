@@ -115,3 +115,9 @@ The core enum's ISO data comes from brick/money 0.15.2, which knows withdrawn co
 brick/money 0.15 needs anyway). The ranges run to brick/math `^1.0`. `IsoMinorUnitsParityTest` therefore stays strict:
 a code brick/money does not know must have `null` in the core. Codes without ISO minor units (`CNH`, `XEU`, ...) are
 rejected by `MoneyScale`.
+
+## `vo_ip_range` stores the canonical form
+
+`IpRange` keeps its bounds in RFC 5952 form (lower-case, zero runs compressed), unlike `IpAddress` and `Cidr`, which
+keep the input spelling. A range written as `2001:DB8::1-2001:DB8::FF` reads back as `2001:db8::1-2001:db8::ff`;
+the ORM column length 79 is the longest canonical range (two 39-character bounds and the separator).

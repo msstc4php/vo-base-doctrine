@@ -1,7 +1,7 @@
 # msstc4php/vo-base-doctrine-bridge
 
 Doctrine ORM and MongoDB ODM types for [`msstc4php/vo-base`][core]:
-37 field types per branch, plus two money embeddables.
+38 field types per branch, plus two money embeddables.
 
 No framework is a runtime dependency. Install the Doctrine stack you actually
 use; the other branch never loads.
@@ -36,7 +36,7 @@ With Symfony, map `TypeRegistrar::types()` under `doctrine.dbal.types` instead,
 or install [`msstc4symfony/vo-base-bridge`][bridge], whose bundle does it.
 
 The ODM branch has its own `Odm\TypeRegistrar` with the same API and the same
-type names — the same 37 keys on both sides.
+type names — the same 38 keys on both sides.
 
 ## Mapping a field
 
