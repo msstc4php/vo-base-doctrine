@@ -40,14 +40,14 @@ final class MoneyScaleTest extends TestCase
     /**
      * @return iterable<string, array{CurrencyCode}>
      */
-    public static function historicCurrencyProvider(): iterable
+    public static function currencyWithoutIsoMinorUnitsProvider(): iterable
     {
-        yield 'ADP' => [CurrencyCode::ADP];
-        yield 'BEF' => [CurrencyCode::BEF];
+        yield 'CNH' => [CurrencyCode::CNH];
+        yield 'XEU' => [CurrencyCode::XEU];
     }
 
-    #[DataProvider('historicCurrencyProvider')]
-    public function testHistoricCurrencyIsRejected(CurrencyCode $currency): void
+    #[DataProvider('currencyWithoutIsoMinorUnitsProvider')]
+    public function testCurrencyWithoutIsoMinorUnitsIsRejected(CurrencyCode $currency): void
     {
         $this->expectException(MoneyMappingException::class);
         $this->expectExceptionMessageMatches('/"' . $currency->value . '"/');
@@ -55,8 +55,8 @@ final class MoneyScaleTest extends TestCase
         MoneyScale::base($currency);
     }
 
-    #[DataProvider('historicCurrencyProvider')]
-    public function testAssertIsoKnownRejectsHistoricCurrency(CurrencyCode $currency): void
+    #[DataProvider('currencyWithoutIsoMinorUnitsProvider')]
+    public function testAssertIsoKnownRejectsCurrencyWithoutIsoMinorUnits(CurrencyCode $currency): void
     {
         $this->expectException(MoneyMappingException::class);
 

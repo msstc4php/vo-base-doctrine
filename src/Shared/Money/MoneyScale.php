@@ -37,7 +37,7 @@ final class MoneyScale
         $scale = $currency->isoMinorUnits();
 
         if ($scale === null) {
-            throw new MoneyMappingException(\sprintf('Currency "%s" has no ISO 4217 minor-unit value and cannot be mapped as money; it is outside the current register, most likely a historic code.', $currency->value));
+            throw new MoneyMappingException(\sprintf('Currency "%s" has no ISO 4217 minor-unit value and cannot be mapped as money.', $currency->value));
         }
 
         return $scale;

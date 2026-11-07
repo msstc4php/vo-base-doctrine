@@ -74,7 +74,7 @@ final class AsymmetryFixTest extends TestCase
     {
         $this->expectException(UnknownCurrencyException::class);
 
-        Type::getType(BrickMoneyType::NAME)->convertToPHPValue('ADP 1.23');
+        Type::getType(BrickMoneyType::NAME)->convertToPHPValue('CNH 1.23');
     }
 
     /**

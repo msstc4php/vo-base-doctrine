@@ -47,11 +47,13 @@ carry `#[IgnoreDeprecations]`.
 
 ## CLDR display digits are not ISO 4217 minor units
 
-`symfony/intl` and the ISO table disagree for 15 currencies:
+`symfony/intl` and the ISO table disagree for 15 currencies in current use (25 codes with historic ones):
 
 ```
 AFN ALL COP HUF IDR IRR KPW LAK LBP MGA MMK SOS SYP YER       CLDR 0, ISO 2
 IQD                                                            CLDR 0, ISO 3
+MRO SLL STD TMM ZMK ZWD (withdrawn)                            CLDR 0, ISO 2
+BEF GRD PTE TPE (withdrawn)                                    CLDR 2, ISO 0
 ```
 
 Storing 1000 HUF through the display value writes 1000 minor units and reads
@@ -105,7 +107,11 @@ Three skip entries copied from the core are deprecated or never registered
 `DisallowedEmptyRuleFixerRector`). Noise, not failures; kept so the two
 repositories' configs stay line-comparable.
 
-## `brick/math` floor is 0.14.2
+## `brick/money` and `brick/math` floor is 0.15
 
-The money embeddables use PascalCase `RoundingMode` cases, first available in brick/math 0.14.2; `brick/money`
-0.10.3 is the first release allowing math 0.14. `composer.json` carries `conflict: brick/math <0.14.2`.
+The core enum's ISO data comes from brick/money 0.15.2, which knows withdrawn codes and `XCG`. With brick/money
+0.10-0.14 the core would accept `new MoneyAmount(100, CurrencyCode::ADP)` while `toBrickMoney()` failed later with
+`UnknownCurrencyException`, so `composer.json` declares `conflict: brick/money <0.15` (and brick/math `<0.15`, which
+brick/money 0.15 needs anyway). The ranges run to brick/math `^1.0`. `IsoMinorUnitsParityTest` therefore stays strict:
+a code brick/money does not know must have `null` in the core. Codes without ISO minor units (`CNH`, `XEU`, ...) are
+rejected by `MoneyScale`.

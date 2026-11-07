@@ -166,7 +166,7 @@ final class AllTypesRoundTripTest extends TestCase
 
         $restored = $type->convertToPHPValue($db);
         self::assertInstanceOf(Money::class, $restored);
-        self::assertTrue($money->isAmountAndCurrencyEqualTo($restored));
+        self::assertSame((string) $money, (string) $restored);
     }
 
     public function testMoneyRejectsNonMoneyOnDatabaseConversion(): void

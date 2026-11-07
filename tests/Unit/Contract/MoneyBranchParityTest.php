@@ -51,7 +51,7 @@ final class MoneyBranchParityTest extends TestCase
     }
 
     /**
-     * @return iterable<string, array{string, string, int}>
+     * @return iterable<string, array{string, string, int<0, max>}>
      */
     public static function preciseProvider(): iterable
     {
@@ -60,6 +60,9 @@ final class MoneyBranchParityTest extends TestCase
         yield 'CLF' => ['1.234567', 'CLF', 6];
     }
 
+    /**
+     * @param int<0, max> $scale
+     */
     #[DataProvider('preciseProvider')]
     public function testPreciseMappingAgreesAcrossBranches(string $amount, string $code, int $scale): void
     {

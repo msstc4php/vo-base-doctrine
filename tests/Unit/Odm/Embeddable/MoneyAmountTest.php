@@ -39,6 +39,9 @@ final class MoneyAmountTest extends TestCase
         yield 'IDR' => ['5000', 'IDR', 500_000];
         yield 'COP' => ['200', 'COP', 20_000];
         yield 'negative USD' => ['-0.05', 'USD', -5];
+        // Withdrawn codes map with the minor units ISO recorded for them.
+        yield 'withdrawn ADP' => ['150', 'ADP', 150];
+        yield 'withdrawn ATS' => ['1.50', 'ATS', 150];
     }
 
     #[DataProvider('roundTripProvider')]
@@ -74,12 +77,12 @@ final class MoneyAmountTest extends TestCase
         self::assertSame($expected, new MoneyAmount($minorUnits, $currency)->toDecimalString());
     }
 
-    public function testHistoricCurrencyIsRejected(): void
+    public function testCurrencyWithoutIsoMinorUnitsIsRejected(): void
     {
         $this->expectException(MoneyMappingException::class);
-        $this->expectExceptionMessageMatches('/"ADP"/');
+        $this->expectExceptionMessageMatches('/"CNH"/');
 
-        new MoneyAmount(100, CurrencyCode::ADP);
+        new MoneyAmount(100, CurrencyCode::CNH);
     }
 
     public function testCustomContextIsRoutedToThePreciseMapping(): void

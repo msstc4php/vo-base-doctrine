@@ -27,7 +27,7 @@ use PHPUnit\Framework\TestCase;
 final class PreciseMoneyAmountTest extends TestCase
 {
     /**
-     * @return iterable<string, array{string, string, int, int}>
+     * @return iterable<string, array{string, string, int<0, max>, int}>
      */
     public static function roundTripProvider(): iterable
     {
@@ -41,6 +41,9 @@ final class PreciseMoneyAmountTest extends TestCase
         yield 'negative USD' => ['-1.2345', 'USD', 4, -12_345];
     }
 
+    /**
+     * @param int<0, max> $scale
+     */
     #[DataProvider('roundTripProvider')]
     public function testRoundTripIsIdentity(string $amount, string $code, int $scale, int $expectedUnscaled): void
     {
@@ -134,11 +137,11 @@ final class PreciseMoneyAmountTest extends TestCase
         self::assertSame($expected, new PreciseMoneyAmount($unscaled, $currency)->toDecimalString());
     }
 
-    public function testHistoricCurrencyIsRejected(): void
+    public function testCurrencyWithoutIsoMinorUnitsIsRejected(): void
     {
         $this->expectException(MoneyMappingException::class);
 
-        new PreciseMoneyAmount(100, CurrencyCode::ADP);
+        new PreciseMoneyAmount(100, CurrencyCode::CNH);
     }
 
     public function testWideningBeyondInt64IsRejected(): void

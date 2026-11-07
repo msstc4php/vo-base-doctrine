@@ -17,7 +17,7 @@ Neither this package nor the core is on Packagist yet, so register both GitHub r
         { "type": "vcs", "url": "https://github.com/msstc4php/vo-base-doctrine-bridge" }
     ],
     "require": {
-        "msstc4php/vo-base-doctrine-bridge": "^0.1"
+        "msstc4php/vo-base-doctrine-bridge": "^0.2"
     }
 }
 ```
@@ -88,7 +88,7 @@ one currency — are in
 ## Scale comes from ISO 4217
 
 The scale of a money column is `CurrencyCode::isoMinorUnits()`, never the CLDR
-display digits. The two differ for 15 currencies: 1000 HUF is 100000 minor
+display digits. The two differ for 15 currencies in current use (25 codes with historic ones): 1000 HUF is 100000 minor
 units by ISO and would be 1000 by CLDR, so mixing them shifts stored amounts by
 two orders of magnitude. A contract test pins the core's table against
 brick/money's.
