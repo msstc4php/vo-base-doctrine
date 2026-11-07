@@ -104,3 +104,8 @@ Three skip entries copied from the core are deprecated or never registered
 (`ChangeOrIfContinueToMultiContinueRector`, `ReturnBinaryOrToEarlyReturnRector`,
 `DisallowedEmptyRuleFixerRector`). Noise, not failures; kept so the two
 repositories' configs stay line-comparable.
+
+## `brick/math` floor is 0.14.2
+
+The money embeddables use PascalCase `RoundingMode` cases, first available in brick/math 0.14.2; `brick/money`
+0.10.3 is the first release allowing math 0.14. `composer.json` carries `conflict: brick/math <0.14.2`.
