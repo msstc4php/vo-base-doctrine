@@ -174,6 +174,6 @@ final class PrimitiveTypesTest extends TestCase
             self::assertArrayHasKey($name, $types);
         }
 
-        self::assertCount(37, $types);
+        self::assertCount(38, $types);
     }
 }

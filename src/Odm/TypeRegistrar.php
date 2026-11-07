@@ -43,6 +43,7 @@ final class TypeRegistrar
         CreditCardNumberType::NAME => CreditCardNumberType::class,
         DecimalType::NAME => DecimalType::class,
         CidrType::NAME => CidrType::class,
+        IpRangeType::NAME => IpRangeType::class,
         TimeOfDayType::NAME => TimeOfDayType::class,
         DurationType::NAME => DurationType::class,
         Base64StringType::NAME => Base64StringType::class,

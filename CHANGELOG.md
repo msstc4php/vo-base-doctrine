@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.0 - 2026-11-07
+
+- `vo_ip_range` ORM and ODM types for `IpRange` (column length 79); requires `msstc4php/vo-base` ^0.3.
+
 ## 0.2.0 - 2026-11-07
 
 - Requires `msstc4php/vo-base` ^0.2, whose ISO data matches brick/money 0.15.

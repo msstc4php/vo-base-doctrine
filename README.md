@@ -17,7 +17,7 @@ Neither this package nor the core is on Packagist yet, so register both GitHub r
         { "type": "vcs", "url": "https://github.com/msstc4php/vo-base-doctrine-bridge" }
     ],
     "require": {
-        "msstc4php/vo-base-doctrine-bridge": "^0.2"
+        "msstc4php/vo-base-doctrine-bridge": "^0.3"
     }
 }
 ```
@@ -101,5 +101,5 @@ make test    # PHPUnit
 make fix     # cs-fixer + Rector, applied
 ```
 
-[core]: ../vo-base
-[bridge]: ../../msstc4symfony/vo-base-bridge-symfony
+[core]: https://github.com/msstc4php/vo-base
+[bridge]: https://github.com/msstc4symfony/vo-base-bridge

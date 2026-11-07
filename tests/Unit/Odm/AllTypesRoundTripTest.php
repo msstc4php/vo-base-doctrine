@@ -28,6 +28,7 @@ use MSSTC4PHP\ValueObject\Network\Cidr;
 use MSSTC4PHP\ValueObject\Network\DomainName;
 use MSSTC4PHP\ValueObject\Network\Hostname;
 use MSSTC4PHP\ValueObject\Network\IpAddress;
+use MSSTC4PHP\ValueObject\Network\IpRange;
 use MSSTC4PHP\ValueObject\Network\Ipv4Address;
 use MSSTC4PHP\ValueObject\Network\Ipv6Address;
 use MSSTC4PHP\ValueObject\Network\MacAddress;
@@ -56,6 +57,7 @@ use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\HexColorType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\HostnameType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\IbanType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\IpAddressType;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\IpRangeType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\Ipv4AddressType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\Ipv6AddressType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\JsonStringType;
@@ -83,6 +85,7 @@ use RuntimeException;
 #[CoversClass(BicType::class)]
 #[CoversClass(BrickMoneyType::class)]
 #[CoversClass(CidrType::class)]
+#[CoversClass(IpRangeType::class)]
 #[CoversClass(ClassStringType::class)]
 #[CoversClass(CreditCardNumberType::class)]
 #[CoversClass(DateRangeType::class)]
@@ -149,6 +152,7 @@ final class AllTypesRoundTripTest extends TestCase
         yield 'credit_card_number' => [CreditCardNumberType::NAME, CreditCardNumber::from('4111111111111111')];
         yield 'decimal' => [DecimalType::NAME, Decimal::from('1.23')];
         yield 'cidr' => [CidrType::NAME, Cidr::from('192.168.0.0/24')];
+        yield 'ip_range' => [IpRangeType::NAME, IpRange::from('10.0.0.5-10.0.0.20')];
         yield 'time_of_day' => [TimeOfDayType::NAME, TimeOfDay::from('09:30:00')];
         yield 'duration' => [DurationType::NAME, Duration::from('PT30S')];
         yield 'base64_string' => [Base64StringType::NAME, Base64String::from('SGVsbG8=')];

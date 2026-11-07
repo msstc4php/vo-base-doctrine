@@ -30,6 +30,7 @@ use MSSTC4PHP\ValueObject\Network\Cidr;
 use MSSTC4PHP\ValueObject\Network\DomainName;
 use MSSTC4PHP\ValueObject\Network\Hostname;
 use MSSTC4PHP\ValueObject\Network\IpAddress;
+use MSSTC4PHP\ValueObject\Network\IpRange;
 use MSSTC4PHP\ValueObject\Network\Ipv4Address;
 use MSSTC4PHP\ValueObject\Network\Ipv6Address;
 use MSSTC4PHP\ValueObject\Network\MacAddress;
@@ -76,6 +77,7 @@ final class NonCanonicalSamples
             'vo_bic' => Bic::from('DEUTDEFF500'),
             'vo_bounded_string' => new BoundedString('abc', 1, 10),
             'vo_cidr' => Cidr::from('2001:db8::/32'),
+            'vo_ip_range' => IpRange::from('2001:db8::1-2001:db8::ff'),
             'vo_class_string' => ClassString::from(DateRange::class),
             'vo_credit_card_number' => CreditCardNumber::from('378282246310005'),
             // The second of the two identical 01:30 instants of the US fall-back,
