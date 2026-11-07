@@ -14,6 +14,7 @@ use MSSTC4PHP\ValueObject\Primitive\NonEmptyString;
 use MSSTC4PHP\ValueObject\Primitive\NonNegativeInt;
 use MSSTC4PHP\ValueObject\Primitive\Percentage;
 use MSSTC4PHP\ValueObject\Primitive\PositiveInt;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\AbstractArrayVoType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\AbstractIntVoType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\BoundedStringType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\IntRangeType;
@@ -22,6 +23,8 @@ use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\NonNegativeIntType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\PercentageType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\PositiveIntType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\TypeRegistrar;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\BoundedStringCodec;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\IntRangeCodec;
 use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -34,7 +37,10 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(NonEmptyStringType::class)]
 #[CoversClass(PercentageType::class)]
 #[CoversClass(BoundedStringType::class)]
+#[CoversClass(BoundedStringCodec::class)]
 #[CoversClass(IntRangeType::class)]
+#[CoversClass(AbstractArrayVoType::class)]
+#[CoversClass(IntRangeCodec::class)]
 #[UsesClass(TypeRegistrar::class)]
 final class PrimitiveTypesTest extends TestCase
 {

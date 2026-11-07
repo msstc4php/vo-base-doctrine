@@ -36,6 +36,9 @@ abstract class AbstractIntVoType extends Type
         return $value->value;
     }
 
+    /**
+     * @throws InvalidArgumentException when the stored value is not numeric
+     */
     #[Override]
     public function convertToPHPValue(mixed $value): ?AbstractIntValueObject
     {

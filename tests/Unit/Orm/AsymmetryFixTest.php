@@ -16,10 +16,19 @@ use JsonException;
 use MSSTC4PHP\ValueObject\Geo\GeoCoordinates;
 use MSSTC4PHP\ValueObject\Geo\Latitude;
 use MSSTC4PHP\ValueObject\Geo\Longitude;
+use MSSTC4PHP\ValueObject\Primitive\BoundedString;
+use MSSTC4PHP\ValueObject\Primitive\IntRange;
 use MSSTC4PHP\ValueObject\Temporal\DateRange;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\AbstractJsonVoType;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\BoundedStringType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\BrickMoneyType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\DateRangeType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\GeoCoordinatesType;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\IntRangeType;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\BoundedStringCodec;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\DateRangeCodec;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\GeoCoordinatesCodec;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\IntRangeCodec;
 use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -27,7 +36,14 @@ use PHPUnit\Framework\TestCase;
 
 #[CoversClass(BrickMoneyType::class)]
 #[CoversClass(DateRangeType::class)]
+#[CoversClass(DateRangeCodec::class)]
 #[CoversClass(GeoCoordinatesType::class)]
+#[CoversClass(BoundedStringCodec::class)]
+#[CoversClass(IntRangeCodec::class)]
+#[CoversClass(BoundedStringType::class)]
+#[CoversClass(IntRangeType::class)]
+#[CoversClass(AbstractJsonVoType::class)]
+#[CoversClass(GeoCoordinatesCodec::class)]
 final class AsymmetryFixTest extends TestCase
 {
     private SQLitePlatform $platform;
@@ -154,9 +170,13 @@ final class AsymmetryFixTest extends TestCase
 
     public function testDateRangeRejectsGarbage(): void
     {
-        $this->expectException(JsonException::class);
-
-        new DateRangeType()->convertToPHPValue('not json', $this->platform);
+        try {
+            new DateRangeType()->convertToPHPValue('not json', $this->platform);
+            self::fail('expected an exception');
+        } catch (InvalidArgumentException $exception) {
+            self::assertInstanceOf(JsonException::class, $exception->getPrevious());
+            self::assertStringNotContainsString('not json', $exception->getMessage());
+        }
     }
 
     /**
@@ -172,5 +192,49 @@ final class AsymmetryFixTest extends TestCase
 
         self::assertInstanceOf(GeoCoordinates::class, $back);
         self::assertTrue($coordinates->equals($back));
+    }
+
+    public function testMalformedGeoJsonFailsWithAMappingError(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        new GeoCoordinatesType()->convertToPHPValue('{"lat":"north"}', $this->platform);
+    }
+
+    public function testJsonScalarIsNotACompositePayload(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        new GeoCoordinatesType()->convertToPHPValue('"just a string"', $this->platform);
+    }
+
+    public function testStoredJsonIsUnchanged(): void
+    {
+        self::assertSame(
+            '{"lat":55.751244,"lng":37.618423}',
+            new GeoCoordinatesType()->convertToDatabaseValue(GeoCoordinates::fromFloats(55.751244, 37.618423), $this->platform),
+        );
+        self::assertSame(
+            '{"start":"2026-11-07T10:00:00.123456+03:00","end":"2026-11-08T10:00:00.654321+03:00"}',
+            new DateRangeType()->convertToDatabaseValue(new DateRange(
+                new DateTimeImmutable('2026-11-07T10:00:00.123456+03:00'),
+                new DateTimeImmutable('2026-11-08T10:00:00.654321+03:00'),
+            ), $this->platform),
+        );
+        self::assertSame('{"min":-5,"max":5}', new IntRangeType()->convertToDatabaseValue(new IntRange(-5, 5), $this->platform));
+        self::assertSame(
+            '{"value":"abc","minLength":0,"maxLength":null}',
+            new BoundedStringType()->convertToDatabaseValue(new BoundedString('abc'), $this->platform),
+        );
+    }
+
+    public function testInvalidUtf8CannotBeWrittenAsJson(): void
+    {
+        try {
+            new BoundedStringType()->convertToDatabaseValue(new BoundedString("\xFF"), $this->platform);
+            self::fail('expected an exception');
+        } catch (InvalidArgumentException $exception) {
+            self::assertInstanceOf(JsonException::class, $exception->getPrevious());
+        }
     }
 }

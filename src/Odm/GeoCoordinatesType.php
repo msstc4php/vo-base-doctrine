@@ -4,50 +4,38 @@ declare(strict_types=1);
 
 namespace MSSTC4PHP\ValueObjectDoctrineBridge\Odm;
 
-use Doctrine\ODM\MongoDB\Types\ClosureToPHP;
-use Doctrine\ODM\MongoDB\Types\Type;
 use InvalidArgumentException;
 use MSSTC4PHP\ValueObject\Geo\GeoCoordinates;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\GeoCoordinatesCodec;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\PayloadCodec;
 use Override;
 
 /**
  * Maps {@see GeoCoordinates} to an embedded sub-document {lat: float, lng: float}.
- * BSON stores arrays natively, so no JSON encoding is needed.
+ *
+ * @extends AbstractArrayVoType<GeoCoordinates>
  */
-final class GeoCoordinatesType extends Type
+final class GeoCoordinatesType extends AbstractArrayVoType
 {
-    use ClosureToPHP;
-
     public const string NAME = 'vo_geo_coordinates';
 
+    private static ?GeoCoordinatesCodec $codec = null;
+
     /**
-     * @return array{lat: float, lng: float}|null
+     * @throws InvalidArgumentException when the stored value does not have the expected shape
      */
-    #[Override]
-    public function convertToDatabaseValue(mixed $value): ?array
-    {
-        if ($value === null) {
-            return null;
-        }
-
-        if (!$value instanceof GeoCoordinates) {
-            throw new InvalidArgumentException(\sprintf('Expected %s, got %s.', GeoCoordinates::class, \get_debug_type($value)));
-        }
-
-        return $value->toArray();
-    }
-
     #[Override]
     public function convertToPHPValue(mixed $value): ?GeoCoordinates
     {
-        if ($value === null) {
-            return null;
-        }
+        return parent::convertToPHPValue($value);
+    }
 
-        if (!\is_array($value) || !isset($value['lat'], $value['lng']) || !\is_numeric($value['lat']) || !\is_numeric($value['lng'])) {
-            throw new InvalidArgumentException(\sprintf('Expected an array with numeric "lat" and "lng" keys, got %s.', \get_debug_type($value)));
-        }
-
-        return GeoCoordinates::fromFloats((float) $value['lat'], (float) $value['lng']);
+    /**
+     * @return PayloadCodec<GeoCoordinates>
+     */
+    #[Override]
+    protected function codec(): PayloadCodec
+    {
+        return self::$codec ??= new GeoCoordinatesCodec();
     }
 }

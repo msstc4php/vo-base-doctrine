@@ -40,6 +40,8 @@ use MSSTC4PHP\ValueObject\Network\UrlScheme;
 use MSSTC4PHP\ValueObject\Temporal\DateRange;
 use MSSTC4PHP\ValueObject\Temporal\Duration;
 use MSSTC4PHP\ValueObject\Temporal\TimeOfDay;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\AbstractArrayVoType;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\AbstractIntVoType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\AbstractStringVoType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\Base64StringType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\BicType;
@@ -74,6 +76,8 @@ use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\UrlPathType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\UrlSchemeType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\UrlType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\UuidType;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\DateRangeCodec;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\GeoCoordinatesCodec;
 use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -88,6 +92,7 @@ use RuntimeException;
 #[CoversClass(ClassStringType::class)]
 #[CoversClass(CreditCardNumberType::class)]
 #[CoversClass(DateRangeType::class)]
+#[CoversClass(DateRangeCodec::class)]
 #[CoversClass(DecimalType::class)]
 #[CoversClass(DurationType::class)]
 #[CoversClass(IbanType::class)]
@@ -96,6 +101,8 @@ use RuntimeException;
 #[CoversClass(DomainNameType::class)]
 #[CoversClass(EmailAddressType::class)]
 #[CoversClass(GeoCoordinatesType::class)]
+#[CoversClass(AbstractArrayVoType::class)]
+#[CoversClass(GeoCoordinatesCodec::class)]
 #[CoversClass(HexColorType::class)]
 #[CoversClass(HostnameType::class)]
 #[CoversClass(IpAddressType::class)]
@@ -106,6 +113,7 @@ use RuntimeException;
 #[CoversClass(MacAddressType::class)]
 #[CoversClass(PhoneNumberType::class)]
 #[CoversClass(PortType::class)]
+#[CoversClass(AbstractIntVoType::class)]
 #[CoversClass(SemVerType::class)]
 #[CoversClass(SlugType::class)]
 #[CoversClass(TypeRegistrar::class)]

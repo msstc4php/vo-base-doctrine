@@ -4,51 +4,38 @@ declare(strict_types=1);
 
 namespace MSSTC4PHP\ValueObjectDoctrineBridge\Odm;
 
-use Doctrine\ODM\MongoDB\Types\ClosureToPHP;
-use Doctrine\ODM\MongoDB\Types\Type;
 use InvalidArgumentException;
 use MSSTC4PHP\ValueObject\Primitive\IntRange;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\IntRangeCodec;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\PayloadCodec;
 use Override;
 
 /**
- * Maps {@see IntRange} to an embedded sub-document {min: int, max: int},
- * following DateRangeType. IntRange::jsonSerialize() is lossless, so
- * delegating to it is safe -- unlike BoundedString.
+ * Maps {@see IntRange} to an embedded sub-document {min: int, max: int}.
+ *
+ * @extends AbstractArrayVoType<IntRange>
  */
-final class IntRangeType extends Type
+final class IntRangeType extends AbstractArrayVoType
 {
-    use ClosureToPHP;
-
     public const string NAME = 'vo_int_range';
 
+    private static ?IntRangeCodec $codec = null;
+
     /**
-     * @return array{min: int, max: int}|null
+     * @throws InvalidArgumentException when the stored value does not have the expected shape
      */
-    #[Override]
-    public function convertToDatabaseValue(mixed $value): ?array
-    {
-        if ($value === null) {
-            return null;
-        }
-
-        if (!$value instanceof IntRange) {
-            throw new InvalidArgumentException(\sprintf('Expected %s, got %s.', IntRange::class, \get_debug_type($value)));
-        }
-
-        return $value->jsonSerialize();
-    }
-
     #[Override]
     public function convertToPHPValue(mixed $value): ?IntRange
     {
-        if ($value === null) {
-            return null;
-        }
+        return parent::convertToPHPValue($value);
+    }
 
-        if (!\is_array($value) || !\is_int($value['min'] ?? null) || !\is_int($value['max'] ?? null)) {
-            throw new InvalidArgumentException(\sprintf('Expected an int-range sub-document, got %s.', \get_debug_type($value)));
-        }
-
-        return new IntRange($value['min'], $value['max']);
+    /**
+     * @return PayloadCodec<IntRange>
+     */
+    #[Override]
+    protected function codec(): PayloadCodec
+    {
+        return self::$codec ??= new IntRangeCodec();
     }
 }

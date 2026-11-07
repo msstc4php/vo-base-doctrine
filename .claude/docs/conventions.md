@@ -7,7 +7,9 @@ Project-specific choices that look arbitrary until you know why.
 `Orm` and `Odm` hold near-identical class names with near-identical bodies. That
 duplication is the design: a shared base would be a horizontal edge between the
 branches, which deptrac forbids and which the CI isolation jobs exist to keep
-impossible. Only genuinely framework-free logic goes to `Shared`.
+impossible. Only genuinely framework-free logic goes to `Shared` — such as the
+`Shared\Payload` codecs, which define each composite payload once so the two
+branches cannot drift; the per-branch bases only add the transport.
 
 ## Shape differences between the branches
 
@@ -27,14 +29,13 @@ names and resolve them inside the test.
 ## `GeoCoordinatesType` is one column, not an embeddable
 
 It predates the money embeddables and stores lat/lng as a single JSON column.
-Left as is: the relocation proved it byte-identical to the original, and
-changing it serves no requirement.
+Left as is: changing the storage serves no requirement.
 
 ## Abstract bases are earned, not assumed
 
-`AbstractIntVoType` exists because two types per branch use it. `Percentage`,
-`BoundedString` and `IntRange` are standalone — a base with one implementation
-is the same standalone shape spread over two files.
+`AbstractIntVoType` has three users per branch, the JSON/array bases four.
+`Percentage` stays standalone: a base with one implementation is the same
+standalone shape spread over two files.
 
 ## Money logic never reads brick/money's currency table
 

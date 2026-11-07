@@ -121,3 +121,12 @@ rejected by `MoneyScale`.
 `IpRange` keeps its bounds in RFC 5952 form (lower-case, zero runs compressed), unlike `IpAddress` and `Cidr`, which
 keep the input spelling. A range written as `2001:DB8::1-2001:DB8::FF` reads back as `2001:db8::1-2001:db8::ff`;
 the ORM column length 79 is the longest canonical range (two 39-character bounds and the separator).
+
+## Deliberately not built: Decimal128 money in ODM, a high-precision `vo_money`
+
+- ODM `Decimal128` for money: rejected for parity with the ORM string form; `MongoDB\BSON\Decimal128` has no
+  arithmetic in PHP, and server-side `$sum` already works on the embeddables' integer minor units. Revisit only for
+  a concrete aggregation need on `vo_money` itself.
+- A high-precision mode for the single-column `vo_money`: unnecessary, the column stores whatever scale was written
+  and reads it back losslessly; `PreciseMoneyAmount` is the queryable high-precision form.
+

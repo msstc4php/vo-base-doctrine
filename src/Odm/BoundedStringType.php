@@ -4,63 +4,39 @@ declare(strict_types=1);
 
 namespace MSSTC4PHP\ValueObjectDoctrineBridge\Odm;
 
-use Doctrine\ODM\MongoDB\Types\ClosureToPHP;
-use Doctrine\ODM\MongoDB\Types\Type;
 use InvalidArgumentException;
 use MSSTC4PHP\ValueObject\Primitive\BoundedString;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\BoundedStringCodec;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\PayloadCodec;
 use Override;
 
 /**
  * Maps {@see BoundedString} to an embedded sub-document carrying all three
- * fields. BSON stores documents natively, so no JSON encoding is needed.
+ * fields; the bounds are part of its identity.
  *
- * Must NOT delegate to jsonSerialize(): that returns the bare string and drops
- * both bounds, which BoundedString::equals compares.
+ * @extends AbstractArrayVoType<BoundedString>
  */
-final class BoundedStringType extends Type
+final class BoundedStringType extends AbstractArrayVoType
 {
-    use ClosureToPHP;
-
     public const string NAME = 'vo_bounded_string';
 
+    private static ?BoundedStringCodec $codec = null;
+
     /**
-     * @return array{value: string, minLength: int, maxLength: int|null}|null
+     * @throws InvalidArgumentException when the stored value does not have the expected shape
      */
-    #[Override]
-    public function convertToDatabaseValue(mixed $value): ?array
-    {
-        if ($value === null) {
-            return null;
-        }
-
-        if (!$value instanceof BoundedString) {
-            throw new InvalidArgumentException(\sprintf('Expected %s, got %s.', BoundedString::class, \get_debug_type($value)));
-        }
-
-        return [
-            'value' => $value->value,
-            'minLength' => $value->minLength,
-            'maxLength' => $value->maxLength,
-        ];
-    }
-
     #[Override]
     public function convertToPHPValue(mixed $value): ?BoundedString
     {
-        if ($value === null) {
-            return null;
-        }
+        return parent::convertToPHPValue($value);
+    }
 
-        if (!\is_array($value) || !\is_string($value['value'] ?? null) || !\is_int($value['minLength'] ?? null)) {
-            throw new InvalidArgumentException(\sprintf('Expected a bounded-string sub-document, got %s.', \get_debug_type($value)));
-        }
-
-        $maxLength = $value['maxLength'] ?? null;
-
-        if ($maxLength !== null && !\is_int($maxLength)) {
-            throw new InvalidArgumentException(\sprintf('Expected an integer or null maxLength, got %s.', \get_debug_type($maxLength)));
-        }
-
-        return new BoundedString($value['value'], $value['minLength'], $maxLength);
+    /**
+     * @return PayloadCodec<BoundedString>
+     */
+    #[Override]
+    protected function codec(): PayloadCodec
+    {
+        return self::$codec ??= new BoundedStringCodec();
     }
 }

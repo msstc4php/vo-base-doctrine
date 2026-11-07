@@ -11,11 +11,14 @@ use MSSTC4PHP\ValueObject\Geo\GeoCoordinates;
 use MSSTC4PHP\ValueObject\Identity\EmailAddress;
 use MSSTC4PHP\ValueObject\Identity\Uuid;
 use MSSTC4PHP\ValueObject\Network\Port;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\AbstractArrayVoType;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\AbstractIntVoType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\EmailAddressType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\GeoCoordinatesType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\PortType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\TypeRegistrar;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\UuidType;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\GeoCoordinatesCodec;
 use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -24,7 +27,10 @@ use PHPUnit\Framework\TestCase;
 
 #[CoversClass(EmailAddressType::class)]
 #[CoversClass(PortType::class)]
+#[CoversClass(AbstractIntVoType::class)]
 #[CoversClass(GeoCoordinatesType::class)]
+#[CoversClass(AbstractArrayVoType::class)]
+#[CoversClass(GeoCoordinatesCodec::class)]
 #[CoversClass(TypeRegistrar::class)]
 #[UsesClass(UuidType::class)]
 final class TypeRoundTripTest extends TestCase

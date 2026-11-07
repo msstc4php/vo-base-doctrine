@@ -13,12 +13,15 @@ use MSSTC4PHP\ValueObject\Identity\EmailAddress;
 use MSSTC4PHP\ValueObject\Identity\Uuid;
 use MSSTC4PHP\ValueObject\Network\IpAddress;
 use MSSTC4PHP\ValueObject\Network\Port;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\AbstractIntVoType;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\AbstractJsonVoType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\EmailAddressType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\GeoCoordinatesType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\IpAddressType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\PortType;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\TypeRegistrar;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\UuidType;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\GeoCoordinatesCodec;
 use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -27,7 +30,10 @@ use PHPUnit\Framework\TestCase;
 
 #[CoversClass(EmailAddressType::class)]
 #[CoversClass(PortType::class)]
+#[CoversClass(AbstractIntVoType::class)]
 #[CoversClass(GeoCoordinatesType::class)]
+#[CoversClass(AbstractJsonVoType::class)]
+#[CoversClass(GeoCoordinatesCodec::class)]
 #[CoversClass(TypeRegistrar::class)]
 #[UsesClass(IpAddressType::class)]
 #[UsesClass(UuidType::class)]

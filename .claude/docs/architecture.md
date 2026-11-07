@@ -42,8 +42,14 @@ job, not its.
 ```
 src/
 ├── Shared/Money/   MoneyScale, MoneyContextRouter, MoneyMappingException
-├── Orm/            38 DBAL types, 2 abstract bases, TypeRegistrar
+├── Shared/Payload/ PayloadCodec + one codec per composite VO (GeoCoordinates, DateRange, IntRange, BoundedString)
+├── Orm/            38 DBAL types, 4 abstract bases (String, Text, Int, Json), TypeRegistrar
 │   └── Embeddable/ MoneyAmount, PreciseMoneyAmount
-└── Odm/            38 ODM types, 2 abstract bases, TypeRegistrar
+└── Odm/            38 ODM types, 3 abstract bases (String, Int, Array), TypeRegistrar
     └── Embeddable/ MoneyAmount, PreciseMoneyAmount
 ```
+
+Composite value objects store the same payload in both branches: a JSON column in ORM (`AbstractJsonVoType`), a
+sub-document in ODM (`AbstractArrayVoType`). The payload shape and its validation live once, in the
+`Shared/Payload` codec, so the branches cannot drift; the bases only handle null, the class check and the transport
+(JSON text vs BSON array). `PortType` is a plain `AbstractIntVoType` subclass in both branches.

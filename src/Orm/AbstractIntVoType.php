@@ -13,9 +13,6 @@ use Override;
 /**
  * Maps any int-backed value object to an INTEGER column. A concrete subclass
  * only names its value-object class.
- *
- * Two subclasses in each branch justify the base; float-backed and composite
- * primitives stay standalone, mirroring PortType and DateRangeType.
  */
 abstract class AbstractIntVoType extends Type
 {
@@ -44,6 +41,9 @@ abstract class AbstractIntVoType extends Type
         return $value->value;
     }
 
+    /**
+     * @throws InvalidArgumentException when the stored value is not numeric
+     */
     #[Override]
     public function convertToPHPValue(mixed $value, AbstractPlatform $platform): ?AbstractIntValueObject
     {

@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.4.0 - 2026-11-07
+
+- Requires `msstc4php/vo-base` ^0.4 (stricter validation: hydrating a stored value with a trailing newline or a
+  URL with spaces now fails; find such rows with `tryFrom()` first).
+- Column declarations of every ORM type are pinned by `SchemaDeclarationTest`.
+- Composite types (`vo_geo_coordinates`, `vo_date_range`, `vo_int_range`, `vo_bounded_string`) share one payload
+  codec per value object (`Shared\Payload`, `@internal`) across ORM and ODM, on new `AbstractJsonVoType` /
+  `AbstractArrayVoType` bases; `PortType` extends `AbstractIntVoType`. Stored formats and public signatures are
+  unchanged.
+- **Fixed:** the ORM `vo_geo_coordinates` type validated nothing on read; a malformed payload now raises
+  `InvalidArgumentException` instead of a `TypeError` or a coordinate built from garbage.
+- **Changed (BC):** composite types raise `InvalidArgumentException` for every malformed payload: invalid JSON on
+  read or a value JSON cannot encode on write (previously `JsonException`, kept as the previous exception), and an
+  unparsable `DateRange` instant in both ORM and ODM (previously `DateMalformedStringException`). Messages no longer
+  quote stored content.
+- The ODM composite types' `convertToDatabaseValue()` is inherited, so its PHPDoc return type is the generic
+  `array<string, scalar|null>|null` rather than the exact shape; the native signature is unchanged.
+- **Changed (BC):** the ODM `vo_geo_coordinates` type no longer accepts numeric strings for `lat`/`lng`; it writes
+  BSON doubles, so only hand-edited documents are affected.
+
 ## 0.3.0 - 2026-11-07
 
 - `vo_ip_range` ORM and ODM types for `IpRange` (column length 79); requires `msstc4php/vo-base` ^0.3.

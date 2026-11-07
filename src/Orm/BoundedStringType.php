@@ -5,73 +5,39 @@ declare(strict_types=1);
 namespace MSSTC4PHP\ValueObjectDoctrineBridge\Orm;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\Type;
 use InvalidArgumentException;
 use MSSTC4PHP\ValueObject\Primitive\BoundedString;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\BoundedStringCodec;
+use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\PayloadCodec;
 use Override;
 
 /**
- * Maps {@see BoundedString} to one JSON column carrying all three fields.
+ * Maps {@see BoundedString} to one JSON column carrying all three fields; a
+ * scalar column would lose the bounds, which are part of its identity.
  *
- * The bounds are part of the value's identity — BoundedString::equals compares
- * them — so a scalar column would not round-trip. This type must NOT delegate
- * to jsonSerialize(): that returns the bare string and drops both bounds.
- * IntRangeType may delegate; this one may not.
+ * @extends AbstractJsonVoType<BoundedString>
  */
-final class BoundedStringType extends Type
+final class BoundedStringType extends AbstractJsonVoType
 {
     public const string NAME = 'vo_bounded_string';
 
+    private static ?BoundedStringCodec $codec = null;
+
     /**
-     * @param array<string, mixed> $column
+     * @throws InvalidArgumentException when the stored value does not have the expected shape
      */
-    #[Override]
-    public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
-    {
-        return $platform->getClobTypeDeclarationSQL($column);
-    }
-
-    #[Override]
-    public function convertToDatabaseValue(mixed $value, AbstractPlatform $platform): ?string
-    {
-        if ($value === null) {
-            return null;
-        }
-
-        if (!$value instanceof BoundedString) {
-            throw new InvalidArgumentException(\sprintf('Expected %s, got %s.', BoundedString::class, \get_debug_type($value)));
-        }
-
-        return \json_encode([
-            'value' => $value->value,
-            'minLength' => $value->minLength,
-            'maxLength' => $value->maxLength,
-        ], \JSON_THROW_ON_ERROR);
-    }
-
     #[Override]
     public function convertToPHPValue(mixed $value, AbstractPlatform $platform): ?BoundedString
     {
-        if ($value === null) {
-            return null;
-        }
+        return parent::convertToPHPValue($value, $platform);
+    }
 
-        if (!\is_string($value)) {
-            throw new InvalidArgumentException(\sprintf('Expected a string column value, got %s.', \get_debug_type($value)));
-        }
-
-        $decoded = \json_decode($value, true, 512, \JSON_THROW_ON_ERROR);
-
-        if (!\is_array($decoded) || !\is_string($decoded['value'] ?? null) || !\is_int($decoded['minLength'] ?? null)) {
-            throw new InvalidArgumentException(\sprintf('Expected a bounded-string payload, got "%s".', $value));
-        }
-
-        $maxLength = $decoded['maxLength'] ?? null;
-
-        if ($maxLength !== null && !\is_int($maxLength)) {
-            throw new InvalidArgumentException(\sprintf('Expected an integer or null maxLength, got %s.', \get_debug_type($maxLength)));
-        }
-
-        return new BoundedString($decoded['value'], $decoded['minLength'], $maxLength);
+    /**
+     * @return PayloadCodec<BoundedString>
+     */
+    #[Override]
+    protected function codec(): PayloadCodec
+    {
+        return self::$codec ??= new BoundedStringCodec();
     }
 }
