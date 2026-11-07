@@ -11,6 +11,7 @@ final class DecimalType extends AbstractStringVoType
 {
     public const string NAME = 'vo_decimal';
 
+    #[Override]
     protected function valueObjectClass(): string
     {
         return Decimal::class;

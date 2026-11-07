@@ -11,6 +11,7 @@ final class CreditCardNumberType extends AbstractStringVoType
 {
     public const string NAME = 'vo_credit_card_number';
 
+    #[Override]
     protected function valueObjectClass(): string
     {
         return CreditCardNumber::class;

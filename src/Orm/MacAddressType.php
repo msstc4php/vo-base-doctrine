@@ -11,6 +11,7 @@ final class MacAddressType extends AbstractStringVoType
 {
     public const string NAME = 'vo_mac_address';
 
+    #[Override]
     protected function valueObjectClass(): string
     {
         return MacAddress::class;

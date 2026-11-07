@@ -11,6 +11,7 @@ final class TimeOfDayType extends AbstractStringVoType
 {
     public const string NAME = 'vo_time_of_day';
 
+    #[Override]
     protected function valueObjectClass(): string
     {
         return TimeOfDay::class;

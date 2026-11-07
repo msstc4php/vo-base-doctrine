@@ -11,6 +11,7 @@ final class EmailAddressType extends AbstractStringVoType
 {
     public const string NAME = 'vo_email_address';
 
+    #[Override]
     protected function valueObjectClass(): string
     {
         return EmailAddress::class;

@@ -11,6 +11,7 @@ final class LocaleType extends AbstractStringVoType
 {
     public const string NAME = 'vo_locale';
 
+    #[Override]
     protected function valueObjectClass(): string
     {
         return Locale::class;

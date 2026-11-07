@@ -11,6 +11,7 @@ final class UriType extends AbstractStringVoType
 {
     public const string NAME = 'vo_uri';
 
+    #[Override]
     protected function valueObjectClass(): string
     {
         return Uri::class;

@@ -21,18 +21,9 @@ use Override;
 abstract class AbstractStringVoType extends Type
 {
     /**
-     * @return class-string<StringConvertible>
-     */
-    abstract protected function valueObjectClass(): string;
-
-    protected function columnLength(): int
-    {
-        return 255;
-    }
-
-    /**
      * @param array<string, mixed> $column
      */
+    #[Override]
     public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
         return $platform->getStringTypeDeclarationSQL(['length' => $this->columnLength()] + $column);
@@ -64,5 +55,15 @@ abstract class AbstractStringVoType extends Type
         }
 
         return ($this->valueObjectClass())::from($value);
+    }
+
+    /**
+     * @return class-string<StringConvertible>
+     */
+    abstract protected function valueObjectClass(): string;
+
+    protected function columnLength(): int
+    {
+        return 255;
     }
 }

@@ -20,11 +20,6 @@ abstract class AbstractIntVoType extends Type
 {
     use ClosureToPHP;
 
-    /**
-     * @return class-string<AbstractIntValueObject>
-     */
-    abstract protected function valueObjectClass(): string;
-
     #[Override]
     public function convertToDatabaseValue(mixed $value): ?int
     {
@@ -54,4 +49,9 @@ abstract class AbstractIntVoType extends Type
 
         return ($this->valueObjectClass())::from((int) $value);
     }
+
+    /**
+     * @return class-string<AbstractIntValueObject>
+     */
+    abstract protected function valueObjectClass(): string;
 }

@@ -22,11 +22,6 @@ abstract class AbstractStringVoType extends Type
 {
     use ClosureToPHP;
 
-    /**
-     * @return class-string<StringConvertible>
-     */
-    abstract protected function valueObjectClass(): string;
-
     #[Override]
     public function convertToDatabaseValue(mixed $value): ?string
     {
@@ -54,4 +49,9 @@ abstract class AbstractStringVoType extends Type
 
         return ($this->valueObjectClass())::from($value);
     }
+
+    /**
+     * @return class-string<StringConvertible>
+     */
+    abstract protected function valueObjectClass(): string;
 }

@@ -99,7 +99,7 @@ brick/money's.
 ## Development
 
 ```
-make check   # php -l, PHPStan level 9, cs-fixer, composer validate/audit, Rector, deptrac
+make check   # php -l, PHPStan level max, cs-fixer, composer validate/audit, Rector, deptrac
 make test    # PHPUnit
 make fix     # cs-fixer + Rector, applied
 ```

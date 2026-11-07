@@ -11,6 +11,7 @@ final class UrlPathType extends AbstractStringVoType
 {
     public const string NAME = 'vo_url_path';
 
+    #[Override]
     protected function valueObjectClass(): string
     {
         return UrlPath::class;

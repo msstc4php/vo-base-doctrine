@@ -9,6 +9,7 @@ use Brick\Math\BigInteger;
 use Brick\Math\RoundingMode;
 use Brick\Money\Context\CustomContext;
 use Brick\Money\Money;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use MSSTC4PHP\ValueObject\I18n\CurrencyCode;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Money\MoneyContextRouter;
@@ -37,9 +38,9 @@ use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Money\MoneyScale;
 final readonly class PreciseMoneyAmount
 {
     public function __construct(
-        #[ORM\Column(type: 'bigint')]
+        #[ORM\Column(type: Types::BIGINT)]
         public int $unscaledValue,
-        #[ORM\Column(type: 'string', length: 3, enumType: CurrencyCode::class)]
+        #[ORM\Column(type: Types::STRING, length: 3, enumType: CurrencyCode::class)]
         public CurrencyCode $currency,
     ) {
         MoneyScale::assertIsoKnown($currency);

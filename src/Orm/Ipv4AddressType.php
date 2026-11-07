@@ -11,6 +11,7 @@ final class Ipv4AddressType extends AbstractStringVoType
 {
     public const string NAME = 'vo_ipv4_address';
 
+    #[Override]
     protected function valueObjectClass(): string
     {
         return Ipv4Address::class;

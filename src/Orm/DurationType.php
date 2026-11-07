@@ -11,6 +11,7 @@ final class DurationType extends AbstractStringVoType
 {
     public const string NAME = 'vo_duration';
 
+    #[Override]
     protected function valueObjectClass(): string
     {
         return Duration::class;

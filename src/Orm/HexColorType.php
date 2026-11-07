@@ -11,6 +11,7 @@ final class HexColorType extends AbstractStringVoType
 {
     public const string NAME = 'vo_hex_color';
 
+    #[Override]
     protected function valueObjectClass(): string
     {
         return HexColor::class;

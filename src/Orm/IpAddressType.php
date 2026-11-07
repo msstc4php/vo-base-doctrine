@@ -11,6 +11,7 @@ final class IpAddressType extends AbstractStringVoType
 {
     public const string NAME = 'vo_ip_address';
 
+    #[Override]
     protected function valueObjectClass(): string
     {
         return IpAddress::class;

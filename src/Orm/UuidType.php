@@ -11,6 +11,7 @@ final class UuidType extends AbstractStringVoType
 {
     public const string NAME = 'vo_uuid';
 
+    #[Override]
     protected function valueObjectClass(): string
     {
         return Uuid::class;

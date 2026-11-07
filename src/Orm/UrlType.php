@@ -11,6 +11,7 @@ final class UrlType extends AbstractStringVoType
 {
     public const string NAME = 'vo_url';
 
+    #[Override]
     protected function valueObjectClass(): string
     {
         return Url::class;

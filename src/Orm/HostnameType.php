@@ -11,6 +11,7 @@ final class HostnameType extends AbstractStringVoType
 {
     public const string NAME = 'vo_hostname';
 
+    #[Override]
     protected function valueObjectClass(): string
     {
         return Hostname::class;

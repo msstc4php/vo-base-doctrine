@@ -11,6 +11,7 @@ final class BicType extends AbstractStringVoType
 {
     public const string NAME = 'vo_bic';
 
+    #[Override]
     protected function valueObjectClass(): string
     {
         return Bic::class;

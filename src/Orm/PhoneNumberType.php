@@ -11,6 +11,7 @@ final class PhoneNumberType extends AbstractStringVoType
 {
     public const string NAME = 'vo_phone_number';
 
+    #[Override]
     protected function valueObjectClass(): string
     {
         return PhoneNumber::class;

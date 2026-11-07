@@ -20,13 +20,9 @@ use Override;
 abstract class AbstractIntVoType extends Type
 {
     /**
-     * @return class-string<AbstractIntValueObject>
-     */
-    abstract protected function valueObjectClass(): string;
-
-    /**
      * @param array<string, mixed> $column
      */
+    #[Override]
     public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
         return $platform->getIntegerTypeDeclarationSQL($column);
@@ -61,4 +57,9 @@ abstract class AbstractIntVoType extends Type
 
         return ($this->valueObjectClass())::from((int) $value);
     }
+
+    /**
+     * @return class-string<AbstractIntValueObject>
+     */
+    abstract protected function valueObjectClass(): string;
 }

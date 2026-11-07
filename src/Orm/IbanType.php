@@ -11,6 +11,7 @@ final class IbanType extends AbstractStringVoType
 {
     public const string NAME = 'vo_iban';
 
+    #[Override]
     protected function valueObjectClass(): string
     {
         return Iban::class;

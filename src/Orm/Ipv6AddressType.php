@@ -11,6 +11,7 @@ final class Ipv6AddressType extends AbstractStringVoType
 {
     public const string NAME = 'vo_ipv6_address';
 
+    #[Override]
     protected function valueObjectClass(): string
     {
         return Ipv6Address::class;

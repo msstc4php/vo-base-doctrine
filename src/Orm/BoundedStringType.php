@@ -25,6 +25,7 @@ final class BoundedStringType extends Type
     /**
      * @param array<string, mixed> $column
      */
+    #[Override]
     public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
         return $platform->getClobTypeDeclarationSQL($column);

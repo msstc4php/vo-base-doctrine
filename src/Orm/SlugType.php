@@ -11,6 +11,7 @@ final class SlugType extends AbstractStringVoType
 {
     public const string NAME = 'vo_slug';
 
+    #[Override]
     protected function valueObjectClass(): string
     {
         return Slug::class;

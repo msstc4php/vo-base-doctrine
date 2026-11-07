@@ -11,6 +11,7 @@ final class DomainNameType extends AbstractStringVoType
 {
     public const string NAME = 'vo_domain_name';
 
+    #[Override]
     protected function valueObjectClass(): string
     {
         return DomainName::class;

@@ -11,6 +11,7 @@ final class CidrType extends AbstractStringVoType
 {
     public const string NAME = 'vo_cidr';
 
+    #[Override]
     protected function valueObjectClass(): string
     {
         return Cidr::class;

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace MSSTC4PHP\ValueObjectDoctrineBridge\Orm\Embeddable;
 
 use Brick\Money\Money;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use MSSTC4PHP\ValueObject\I18n\CurrencyCode;
 use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Money\MoneyContextRouter;
@@ -33,9 +34,9 @@ use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Money\MoneyScale;
 final readonly class MoneyAmount
 {
     public function __construct(
-        #[ORM\Column(type: 'bigint')]
+        #[ORM\Column(type: Types::BIGINT)]
         public int $minorUnits,
-        #[ORM\Column(type: 'string', length: 3, enumType: CurrencyCode::class)]
+        #[ORM\Column(type: Types::STRING, length: 3, enumType: CurrencyCode::class)]
         public CurrencyCode $currency,
     ) {
         // The int64 bound is not checked here: a PHP int is already within it on

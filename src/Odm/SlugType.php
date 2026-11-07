@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace MSSTC4PHP\ValueObjectDoctrineBridge\Odm;
 
 use MSSTC4PHP\ValueObject\Format\Slug;
+use Override;
 
 final class SlugType extends AbstractStringVoType
 {
     public const string NAME = 'vo_slug';
 
+    #[Override]
     protected function valueObjectClass(): string
     {
         return Slug::class;

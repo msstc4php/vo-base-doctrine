@@ -30,6 +30,7 @@ final class BrickMoneyType extends Type
     /**
      * @param array<string, mixed> $column
      */
+    #[Override]
     public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
         return $platform->getStringTypeDeclarationSQL(['length' => self::COLUMN_LENGTH] + $column);

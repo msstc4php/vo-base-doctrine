@@ -11,6 +11,7 @@ final class ClassStringType extends AbstractStringVoType
 {
     public const string NAME = 'vo_class_string';
 
+    #[Override]
     protected function valueObjectClass(): string
     {
         return ClassString::class;
