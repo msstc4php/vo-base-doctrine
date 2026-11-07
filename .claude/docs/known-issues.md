@@ -47,10 +47,10 @@ carry `#[IgnoreDeprecations]`.
 
 ## CLDR display digits are not ISO 4217 minor units
 
-`symfony/intl` and the ISO table disagree for 16 currencies:
+`symfony/intl` and the ISO table disagree for 15 currencies:
 
 ```
-AFN ALL COP HUF IDR IRR KPW LAK LBP MGA MMK PKR SOS SYP YER   CLDR 0, ISO 2
+AFN ALL COP HUF IDR IRR KPW LAK LBP MGA MMK SOS SYP YER       CLDR 0, ISO 2
 IQD                                                            CLDR 0, ISO 3
 ```
 

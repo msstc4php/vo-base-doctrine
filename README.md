@@ -91,7 +91,7 @@ one currency — are in
 ## Scale comes from ISO 4217
 
 The scale of a money column is `CurrencyCode::isoMinorUnits()`, never the CLDR
-display digits. The two differ for 16 currencies: 1000 HUF is 100000 minor
+display digits. The two differ for 15 currencies: 1000 HUF is 100000 minor
 units by ISO and would be 1000 by CLDR, so mixing them shifts stored amounts by
 two orders of magnitude. A contract test pins the core's table against
 brick/money's.
