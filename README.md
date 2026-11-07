@@ -6,24 +6,21 @@ Doctrine ORM and MongoDB ODM types for [`msstc4php/vo-base`][core]:
 No framework is a runtime dependency. Install the Doctrine stack you actually
 use; the other branch never loads.
 
-## Install (pre-release)
+## Install
 
-Neither this package nor the core is on Packagist yet. Check both out side by
-side and point Composer at the core:
+Neither this package nor the core is on Packagist yet, so register both GitHub repositories:
 
 ```json
 {
     "repositories": [
-        { "type": "path", "url": "../vo-base", "options": { "symlink": true } }
+        { "type": "vcs", "url": "https://github.com/msstc4php/vo-base" },
+        { "type": "vcs", "url": "https://github.com/msstc4php/vo-base-doctrine-bridge" }
     ],
     "require": {
-        "msstc4php/vo-base-doctrine-bridge": "dev-main"
+        "msstc4php/vo-base-doctrine-bridge": "^0.1"
     }
 }
 ```
-
-Composer derives a path package's version from the checked-out branch name, so
-the core must be on the branch the constraint names.
 
 ## Registering the types
 
