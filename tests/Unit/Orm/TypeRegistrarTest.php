@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Tests\Unit\Orm;
+namespace MSSTC4PHP\ValueObject\Doctrine\Tests\Unit\Orm;
 
 use Doctrine\DBAL\Types\Type;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\TypeRegistrar;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\TypeRegistrar;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 

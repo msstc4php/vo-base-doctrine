@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Tests\Unit\Odm;
+namespace MSSTC4PHP\ValueObject\Doctrine\Tests\Unit\Odm;
 
 use Doctrine\ODM\MongoDB\Types\Type;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\TypeRegistrar;
+use MSSTC4PHP\ValueObject\Doctrine\Odm\TypeRegistrar;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 

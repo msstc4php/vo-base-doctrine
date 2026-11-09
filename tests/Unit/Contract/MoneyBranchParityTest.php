@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Tests\Unit\Contract;
+namespace MSSTC4PHP\ValueObject\Doctrine\Tests\Unit\Contract;
 
 use Brick\Math\RoundingMode;
 use Brick\Money\Context\CustomContext;
 use Brick\Money\Money;
+use MSSTC4PHP\ValueObject\Doctrine\Odm\Embeddable\MoneyAmount as OdmMoneyAmount;
+use MSSTC4PHP\ValueObject\Doctrine\Odm\Embeddable\PreciseMoneyAmount as OdmPrecise;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\Embeddable\MoneyAmount as OrmMoneyAmount;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\Embeddable\PreciseMoneyAmount as OrmPrecise;
 use MSSTC4PHP\ValueObject\I18n\CurrencyCode;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\Embeddable\MoneyAmount as OdmMoneyAmount;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\Embeddable\PreciseMoneyAmount as OdmPrecise;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\Embeddable\MoneyAmount as OrmMoneyAmount;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\Embeddable\PreciseMoneyAmount as OrmPrecise;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;

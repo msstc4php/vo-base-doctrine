@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Orm\Embeddable;
+namespace MSSTC4PHP\ValueObject\Doctrine\Orm\Embeddable;
 
 use Brick\Math\BigDecimal;
 use Brick\Math\BigInteger;
@@ -11,10 +11,10 @@ use Brick\Money\Context\CustomContext;
 use Brick\Money\Money;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Money\MoneyContextRouter;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Money\MoneyMappingException;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Money\MoneyScale;
 use MSSTC4PHP\ValueObject\I18n\CurrencyCode;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Money\MoneyContextRouter;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Money\MoneyMappingException;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Money\MoneyScale;
 
 /**
  * Money at two digits beyond the currency's minor unit, for intermediate

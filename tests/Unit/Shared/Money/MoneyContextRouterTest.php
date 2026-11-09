@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Tests\Unit\Shared\Money;
+namespace MSSTC4PHP\ValueObject\Doctrine\Tests\Unit\Shared\Money;
 
 use Brick\Money\Context\AutoContext;
 use Brick\Money\Context\CashContext;
 use Brick\Money\Context\CustomContext;
 use Brick\Money\Money;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Money\MoneyContextRouter;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Money\MoneyMappingException;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Money\MoneyContextRouter;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Money\MoneyMappingException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\IgnoreDeprecations;

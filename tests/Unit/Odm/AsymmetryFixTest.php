@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Tests\Unit\Odm;
+namespace MSSTC4PHP\ValueObject\Doctrine\Tests\Unit\Odm;
 
 use Brick\Money\Context\CustomContext;
 use Brick\Money\Context\DefaultContext;
@@ -12,17 +12,17 @@ use DateTimeImmutable;
 use DateTimeZone;
 use Doctrine\ODM\MongoDB\Types\Type;
 use InvalidArgumentException;
+use MSSTC4PHP\ValueObject\Doctrine\Odm\AbstractArrayVoType;
+use MSSTC4PHP\ValueObject\Doctrine\Odm\BrickMoneyType;
+use MSSTC4PHP\ValueObject\Doctrine\Odm\DateRangeType;
+use MSSTC4PHP\ValueObject\Doctrine\Odm\GeoCoordinatesType;
+use MSSTC4PHP\ValueObject\Doctrine\Odm\TypeRegistrar;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\DateRangeCodec;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\GeoCoordinatesCodec;
 use MSSTC4PHP\ValueObject\Geo\GeoCoordinates;
 use MSSTC4PHP\ValueObject\Geo\Latitude;
 use MSSTC4PHP\ValueObject\Geo\Longitude;
 use MSSTC4PHP\ValueObject\Temporal\DateRange;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\AbstractArrayVoType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\BrickMoneyType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\DateRangeType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\GeoCoordinatesType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\TypeRegistrar;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\DateRangeCodec;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\GeoCoordinatesCodec;
 use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;

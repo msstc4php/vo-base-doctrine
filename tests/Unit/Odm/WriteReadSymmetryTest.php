@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Tests\Unit\Odm;
+namespace MSSTC4PHP\ValueObject\Doctrine\Tests\Unit\Odm;
 
 use Brick\Money\Money;
 use Doctrine\ODM\MongoDB\Types\Type;
 use MSSTC4PHP\ValueObject\Contract\ValueObject;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\TypeRegistrar;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Tests\Support\NonCanonicalSamples;
+use MSSTC4PHP\ValueObject\Doctrine\Odm\TypeRegistrar;
+use MSSTC4PHP\ValueObject\Doctrine\Tests\Support\NonCanonicalSamples;
 use Override;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\DataProvider;

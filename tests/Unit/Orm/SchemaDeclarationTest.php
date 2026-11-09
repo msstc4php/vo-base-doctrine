@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Tests\Unit\Orm;
+namespace MSSTC4PHP\ValueObject\Doctrine\Tests\Unit\Orm;
 
 use Doctrine\DBAL\Platforms\SQLitePlatform;
 use Doctrine\DBAL\Types\Type;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\TypeRegistrar;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\TypeRegistrar;
 use Override;
 use PHPUnit\Framework\Attributes\CoversNamespace;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -16,7 +16,7 @@ use PHPUnit\Framework\TestCase;
  * A column definition is a schema contract: changing a length or a column type
  * forces a migration on every consumer, so each declaration is pinned here.
  */
-#[CoversNamespace('MSSTC4PHP\\ValueObjectDoctrineBridge\\Orm')]
+#[CoversNamespace('MSSTC4PHP\\ValueObject\\Doctrine\\Orm')]
 final class SchemaDeclarationTest extends TestCase
 {
     #[Override]

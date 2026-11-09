@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Money;
+namespace MSSTC4PHP\ValueObject\Doctrine\Shared\Money;
 
 use Brick\Money\Context\CustomContext;
 use Brick\Money\Context\DefaultContext;

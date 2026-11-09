@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Odm\Embeddable;
+namespace MSSTC4PHP\ValueObject\Doctrine\Odm\Embeddable;
 
 use Brick\Money\Money;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Money\MoneyContextRouter;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Money\MoneyMappingException;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Money\MoneyScale;
 use MSSTC4PHP\ValueObject\I18n\CurrencyCode;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Money\MoneyContextRouter;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Money\MoneyMappingException;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Money\MoneyScale;
 
 /**
  * Two-column money: the amount in the currency's minor units, plus the currency.

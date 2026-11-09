@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Odm;
+namespace MSSTC4PHP\ValueObject\Doctrine\Odm;
 
 use InvalidArgumentException;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\GeoCoordinatesCodec;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\PayloadCodec;
 use MSSTC4PHP\ValueObject\Geo\GeoCoordinates;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\GeoCoordinatesCodec;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\PayloadCodec;
 use Override;
 
 /**

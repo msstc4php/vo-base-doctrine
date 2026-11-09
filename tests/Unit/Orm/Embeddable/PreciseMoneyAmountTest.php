@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Tests\Unit\Orm\Embeddable;
+namespace MSSTC4PHP\ValueObject\Doctrine\Tests\Unit\Orm\Embeddable;
 
 use Brick\Math\Exception\RoundingNecessaryException;
 use Brick\Math\RoundingMode;
 use Brick\Money\Context\CashContext;
 use Brick\Money\Context\CustomContext;
 use Brick\Money\Money;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\Embeddable\MoneyAmount;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\Embeddable\PreciseMoneyAmount;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Money\MoneyContextRouter;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Money\MoneyMappingException;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Money\MoneyScale;
 use MSSTC4PHP\ValueObject\I18n\CurrencyCode;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\Embeddable\MoneyAmount;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\Embeddable\PreciseMoneyAmount;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Money\MoneyContextRouter;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Money\MoneyMappingException;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Money\MoneyScale;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\UsesClass;

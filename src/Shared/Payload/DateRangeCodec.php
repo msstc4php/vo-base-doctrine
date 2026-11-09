@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload;
+namespace MSSTC4PHP\ValueObject\Doctrine\Shared\Payload;
 
 use DateMalformedStringException;
 use DateTimeImmutable;

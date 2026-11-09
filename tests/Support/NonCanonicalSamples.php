@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Tests\Support;
+namespace MSSTC4PHP\ValueObject\Doctrine\Tests\Support;
 
 use Brick\Money\Context\CustomContext;
 use Brick\Money\Money;

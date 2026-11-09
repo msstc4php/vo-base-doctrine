@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Orm;
+namespace MSSTC4PHP\ValueObject\Doctrine\Orm;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use InvalidArgumentException;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\IntRangeCodec;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\PayloadCodec;
 use MSSTC4PHP\ValueObject\Primitive\IntRange;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\IntRangeCodec;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\PayloadCodec;
 use Override;
 
 /**

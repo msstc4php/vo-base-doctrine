@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Odm\Embeddable;
+namespace MSSTC4PHP\ValueObject\Doctrine\Odm\Embeddable;
 
 use Brick\Math\BigDecimal;
 use Brick\Math\BigInteger;
@@ -10,10 +10,10 @@ use Brick\Math\RoundingMode;
 use Brick\Money\Context\CustomContext;
 use Brick\Money\Money;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Money\MoneyContextRouter;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Money\MoneyMappingException;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Money\MoneyScale;
 use MSSTC4PHP\ValueObject\I18n\CurrencyCode;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Money\MoneyContextRouter;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Money\MoneyMappingException;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Money\MoneyScale;
 
 /**
  * Money at two digits beyond the currency's minor unit, for intermediate

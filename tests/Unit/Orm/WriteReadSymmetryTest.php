@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Tests\Unit\Orm;
+namespace MSSTC4PHP\ValueObject\Doctrine\Tests\Unit\Orm;
 
 use Brick\Money\Money;
 use Doctrine\DBAL\Platforms\SQLitePlatform;
 use Doctrine\DBAL\Types\Type;
 use MSSTC4PHP\ValueObject\Contract\ValueObject;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\TypeRegistrar;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Tests\Support\NonCanonicalSamples;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\TypeRegistrar;
+use MSSTC4PHP\ValueObject\Doctrine\Tests\Support\NonCanonicalSamples;
 use Override;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\DataProvider;

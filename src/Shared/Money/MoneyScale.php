@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Money;
+namespace MSSTC4PHP\ValueObject\Doctrine\Shared\Money;
 
 use MSSTC4PHP\ValueObject\I18n\CurrencyCode;
 

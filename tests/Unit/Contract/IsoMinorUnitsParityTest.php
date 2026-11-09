@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Tests\Unit\Contract;
+namespace MSSTC4PHP\ValueObject\Doctrine\Tests\Unit\Contract;
 
 use Brick\Money\Currency;
 use Brick\Money\Exception\UnknownCurrencyException;

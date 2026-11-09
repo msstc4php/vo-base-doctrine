@@ -2,11 +2,22 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Tests\Unit\Odm;
+namespace MSSTC4PHP\ValueObject\Doctrine\Tests\Unit\Odm;
 
 use Doctrine\ODM\MongoDB\Types\Type;
 use InvalidArgumentException;
 use MSSTC4PHP\ValueObject\Contract\ValueObject;
+use MSSTC4PHP\ValueObject\Doctrine\Odm\AbstractArrayVoType;
+use MSSTC4PHP\ValueObject\Doctrine\Odm\AbstractIntVoType;
+use MSSTC4PHP\ValueObject\Doctrine\Odm\BoundedStringType;
+use MSSTC4PHP\ValueObject\Doctrine\Odm\IntRangeType;
+use MSSTC4PHP\ValueObject\Doctrine\Odm\NonEmptyStringType;
+use MSSTC4PHP\ValueObject\Doctrine\Odm\NonNegativeIntType;
+use MSSTC4PHP\ValueObject\Doctrine\Odm\PercentageType;
+use MSSTC4PHP\ValueObject\Doctrine\Odm\PositiveIntType;
+use MSSTC4PHP\ValueObject\Doctrine\Odm\TypeRegistrar;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\BoundedStringCodec;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\IntRangeCodec;
 use MSSTC4PHP\ValueObject\Exception\InvalidPositiveIntException;
 use MSSTC4PHP\ValueObject\Primitive\BoundedString;
 use MSSTC4PHP\ValueObject\Primitive\IntRange;
@@ -14,17 +25,6 @@ use MSSTC4PHP\ValueObject\Primitive\NonEmptyString;
 use MSSTC4PHP\ValueObject\Primitive\NonNegativeInt;
 use MSSTC4PHP\ValueObject\Primitive\Percentage;
 use MSSTC4PHP\ValueObject\Primitive\PositiveInt;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\AbstractArrayVoType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\AbstractIntVoType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\BoundedStringType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\IntRangeType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\NonEmptyStringType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\NonNegativeIntType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\PercentageType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\PositiveIntType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Odm\TypeRegistrar;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\BoundedStringCodec;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\IntRangeCodec;
 use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;

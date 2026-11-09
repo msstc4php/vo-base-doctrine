@@ -2,13 +2,24 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Tests\Unit\Orm;
+namespace MSSTC4PHP\ValueObject\Doctrine\Tests\Unit\Orm;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Platforms\SQLitePlatform;
 use Doctrine\DBAL\Types\Type;
 use InvalidArgumentException;
 use MSSTC4PHP\ValueObject\Contract\ValueObject;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\AbstractIntVoType;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\AbstractJsonVoType;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\BoundedStringType;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\IntRangeType;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\NonEmptyStringType;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\NonNegativeIntType;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\PercentageType;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\PositiveIntType;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\TypeRegistrar;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\BoundedStringCodec;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\IntRangeCodec;
 use MSSTC4PHP\ValueObject\Exception\InvalidPositiveIntException;
 use MSSTC4PHP\ValueObject\Primitive\BoundedString;
 use MSSTC4PHP\ValueObject\Primitive\IntRange;
@@ -16,17 +27,6 @@ use MSSTC4PHP\ValueObject\Primitive\NonEmptyString;
 use MSSTC4PHP\ValueObject\Primitive\NonNegativeInt;
 use MSSTC4PHP\ValueObject\Primitive\Percentage;
 use MSSTC4PHP\ValueObject\Primitive\PositiveInt;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\AbstractIntVoType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\AbstractJsonVoType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\BoundedStringType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\IntRangeType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\NonEmptyStringType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\NonNegativeIntType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\PercentageType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\PositiveIntType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\TypeRegistrar;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\BoundedStringCodec;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\IntRangeCodec;
 use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;

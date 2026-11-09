@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Tests\Unit\Orm;
+namespace MSSTC4PHP\ValueObject\Doctrine\Tests\Unit\Orm;
 
 use Doctrine\DBAL\Platforms\SQLitePlatform;
 use Doctrine\DBAL\Types\Type;
 use InvalidArgumentException;
 use MSSTC4PHP\ValueObject\Contract\ValueObject;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\AbstractIntVoType;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\AbstractJsonVoType;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\EmailAddressType;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\GeoCoordinatesType;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\IpAddressType;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\PortType;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\TypeRegistrar;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\UuidType;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\GeoCoordinatesCodec;
 use MSSTC4PHP\ValueObject\Geo\GeoCoordinates;
 use MSSTC4PHP\ValueObject\Identity\EmailAddress;
 use MSSTC4PHP\ValueObject\Identity\Uuid;
 use MSSTC4PHP\ValueObject\Network\IpAddress;
 use MSSTC4PHP\ValueObject\Network\Port;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\AbstractIntVoType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\AbstractJsonVoType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\EmailAddressType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\GeoCoordinatesType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\IpAddressType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\PortType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\TypeRegistrar;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\UuidType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\GeoCoordinatesCodec;
 use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;

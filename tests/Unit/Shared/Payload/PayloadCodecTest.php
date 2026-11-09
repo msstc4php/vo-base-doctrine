@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Tests\Unit\Shared\Payload;
+namespace MSSTC4PHP\ValueObject\Doctrine\Tests\Unit\Shared\Payload;
 
 use DateTimeImmutable;
 use InvalidArgumentException;
 use MSSTC4PHP\ValueObject\Contract\ValueObject;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\BoundedStringCodec;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\DateRangeCodec;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\GeoCoordinatesCodec;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\IntRangeCodec;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\PayloadCodec;
 use MSSTC4PHP\ValueObject\Geo\GeoCoordinates;
 use MSSTC4PHP\ValueObject\Primitive\BoundedString;
 use MSSTC4PHP\ValueObject\Primitive\IntRange;
 use MSSTC4PHP\ValueObject\Temporal\DateRange;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\BoundedStringCodec;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\DateRangeCodec;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\GeoCoordinatesCodec;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\IntRangeCodec;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\PayloadCodec;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;

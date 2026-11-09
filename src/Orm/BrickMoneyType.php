@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Orm;
+namespace MSSTC4PHP\ValueObject\Doctrine\Orm;
 
 use Brick\Math\BigDecimal;
 use Brick\Money\Context;

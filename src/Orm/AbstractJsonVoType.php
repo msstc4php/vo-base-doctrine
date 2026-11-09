@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Orm;
+namespace MSSTC4PHP\ValueObject\Doctrine\Orm;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 use InvalidArgumentException;
 use JsonException;
 use MSSTC4PHP\ValueObject\Contract\ValueObject;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\PayloadCodec;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\PayloadCodec;
 use Override;
 
 /**

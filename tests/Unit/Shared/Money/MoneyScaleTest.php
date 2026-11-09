@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Tests\Unit\Shared\Money;
+namespace MSSTC4PHP\ValueObject\Doctrine\Tests\Unit\Shared\Money;
 
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Money\MoneyMappingException;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Money\MoneyScale;
 use MSSTC4PHP\ValueObject\I18n\CurrencyCode;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Money\MoneyMappingException;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Money\MoneyScale;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;

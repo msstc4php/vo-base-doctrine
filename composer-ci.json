@@ -1,5 +1,5 @@
 {
-    "name": "msstc4php/vo-base-doctrine-bridge",
+    "name": "msstc4php/vo-base-doctrine",
     "description": "Doctrine ORM and MongoDB ODM types and embeddables for msstc4php/vo-base. (CI profile: CI-only tools)",
     "type": "library",
     "license": "MIT",
@@ -43,6 +43,9 @@
         "roave/backward-compatibility-check": "^8.20",
         "roave/security-advisories": "dev-latest"
     },
+    "conflict": {
+        "msstc4php/vo-base-doctrine-bridge": "*"
+    },
     "suggest": {
         "doctrine/dbal": "To persist scalar value objects as Doctrine ORM column types.",
         "doctrine/orm": "To map value objects and the money embeddables.",
@@ -51,12 +54,12 @@
     },
     "autoload": {
         "psr-4": {
-            "MSSTC4PHP\\ValueObjectDoctrineBridge\\": "src/"
+            "MSSTC4PHP\\ValueObject\\Doctrine\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MSSTC4PHP\\ValueObjectDoctrineBridge\\Tests\\": "tests/"
+            "MSSTC4PHP\\ValueObject\\Doctrine\\Tests\\": "tests/"
         }
     },
     "config": {

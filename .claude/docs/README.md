@@ -1,6 +1,6 @@
 # Internal knowledge base
 
-Engineer notes for `msstc4php/vo-base-doctrine-bridge`. Team-readable, not
+Engineer notes for `msstc4php/vo-base-doctrine`. Team-readable, not
 user-facing documentation.
 
 | File | What it answers |
@@ -11,4 +11,4 @@ user-facing documentation.
 | [known-issues.md](known-issues.md) | Traps that cost time: the `ofMinor` scale bug, the two write/read asymmetries, CLDR vs ISO digits, the Rector/deptrac syntax conflict |
 
 Related: the core's own `.claude/docs/`, and
-`../../msstc4symfony/vo-base-bridge-symfony/.claude/docs/` for the bundle.
+`../vo-base-bundle/.claude/docs/` for the bundle.

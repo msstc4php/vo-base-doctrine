@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Tests\Unit\Orm;
+namespace MSSTC4PHP\ValueObject\Doctrine\Tests\Unit\Orm;
 
 use Brick\Money\Context\CustomContext;
 use Brick\Money\Context\DefaultContext;
@@ -13,22 +13,22 @@ use DateTimeZone;
 use Doctrine\DBAL\Platforms\SQLitePlatform;
 use InvalidArgumentException;
 use JsonException;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\AbstractJsonVoType;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\BoundedStringType;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\BrickMoneyType;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\DateRangeType;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\GeoCoordinatesType;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\IntRangeType;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\BoundedStringCodec;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\DateRangeCodec;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\GeoCoordinatesCodec;
+use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\IntRangeCodec;
 use MSSTC4PHP\ValueObject\Geo\GeoCoordinates;
 use MSSTC4PHP\ValueObject\Geo\Latitude;
 use MSSTC4PHP\ValueObject\Geo\Longitude;
 use MSSTC4PHP\ValueObject\Primitive\BoundedString;
 use MSSTC4PHP\ValueObject\Primitive\IntRange;
 use MSSTC4PHP\ValueObject\Temporal\DateRange;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\AbstractJsonVoType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\BoundedStringType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\BrickMoneyType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\DateRangeType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\GeoCoordinatesType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\IntRangeType;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\BoundedStringCodec;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\DateRangeCodec;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\GeoCoordinatesCodec;
-use MSSTC4PHP\ValueObjectDoctrineBridge\Shared\Payload\IntRangeCodec;
 use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;

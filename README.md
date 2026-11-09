@@ -1,4 +1,4 @@
-# msstc4php/vo-base-doctrine-bridge
+# msstc4php/vo-base-doctrine
 
 Doctrine ORM and MongoDB ODM types for [`msstc4php/vo-base`][core]:
 38 field types per branch, plus two money embeddables.
@@ -14,10 +14,10 @@ Neither this package nor the core is on Packagist yet, so register both GitHub r
 {
     "repositories": [
         { "type": "vcs", "url": "https://github.com/msstc4php/vo-base" },
-        { "type": "vcs", "url": "https://github.com/msstc4php/vo-base-doctrine-bridge" }
+        { "type": "vcs", "url": "https://github.com/msstc4php/vo-base-doctrine" }
     ],
     "require": {
-        "msstc4php/vo-base-doctrine-bridge": "^0.4"
+        "msstc4php/vo-base-doctrine": "^0.5"
     }
 }
 ```
@@ -27,13 +27,13 @@ Neither this package nor the core is on Packagist yet, so register both GitHub r
 Without Symfony, once at bootstrap — idempotent, safe in long-running workers:
 
 ```php
-use MSSTC4PHP\ValueObjectDoctrineBridge\Orm\TypeRegistrar;
+use MSSTC4PHP\ValueObject\Doctrine\Orm\TypeRegistrar;
 
 TypeRegistrar::registerAll();
 ```
 
 With Symfony, map `TypeRegistrar::types()` under `doctrine.dbal.types` instead,
-or install [`msstc4symfony/vo-base-bridge`][bridge], whose bundle does it.
+or install [`msstc4php/vo-base-bundle`][bridge], whose bundle does it.
 
 The ODM branch has its own `Odm\TypeRegistrar` with the same API and the same
 type names — the same 38 keys on both sides.
@@ -102,4 +102,4 @@ make fix     # cs-fixer + Rector, applied
 ```
 
 [core]: https://github.com/msstc4php/vo-base
-[bridge]: https://github.com/msstc4symfony/vo-base-bridge
+[bridge]: https://github.com/msstc4php/vo-base-bundle

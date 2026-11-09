@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Odm;
+namespace MSSTC4PHP\ValueObject\Doctrine\Odm;
 
 use MSSTC4PHP\ValueObject\Network\Cidr;
 use Override;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MSSTC4PHP\ValueObjectDoctrineBridge\Orm;
+namespace MSSTC4PHP\ValueObject\Doctrine\Orm;
 
 use MSSTC4PHP\ValueObject\Network\DomainName;
 use Override;

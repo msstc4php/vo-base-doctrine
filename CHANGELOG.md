@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.0 - 2026-11-09
+
+**Changed (BC):** the package is renamed to the convention of third-party libraries with framework add-ons.
+
+- Package `msstc4php/vo-base-doctrine-bridge` is now `msstc4php/vo-base-doctrine`; the GitHub repository moved to
+  `msstc4php/vo-base-doctrine`.
+- Namespace `MSSTC4PHP\ValueObjectDoctrineBridge\` is now `MSSTC4PHP\ValueObject\Doctrine\` (e.g.
+  `MSSTC4PHP\ValueObject\Doctrine\Orm\TypeRegistrar`). Type names (`vo_*`) and stored formats are unchanged.
+- Upgrading: replace the old package and its VCS URL with the new ones; `conflict` refuses to install both.
+
 ## 0.4.0 - 2026-11-07
 
 - Requires `msstc4php/vo-base` ^0.4 (stricter validation: hydrating a stored value with a trailing newline or a
