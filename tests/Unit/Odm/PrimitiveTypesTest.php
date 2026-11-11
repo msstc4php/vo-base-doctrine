@@ -17,8 +17,6 @@ use MSSTC4PHP\ValueObject\Doctrine\Odm\PercentageType;
 use MSSTC4PHP\ValueObject\Doctrine\Odm\PositiveIntType;
 use MSSTC4PHP\ValueObject\Doctrine\Odm\TypeRegistrar;
 use MSSTC4PHP\ValueObject\Exception\InvalidPositiveIntException;
-use MSSTC4PHP\ValueObject\Payload\BoundedStringCodec;
-use MSSTC4PHP\ValueObject\Payload\IntRangeCodec;
 use MSSTC4PHP\ValueObject\Primitive\BoundedString;
 use MSSTC4PHP\ValueObject\Primitive\IntRange;
 use MSSTC4PHP\ValueObject\Primitive\NonEmptyString;
@@ -37,10 +35,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(NonEmptyStringType::class)]
 #[CoversClass(PercentageType::class)]
 #[CoversClass(BoundedStringType::class)]
-#[CoversClass(BoundedStringCodec::class)]
 #[CoversClass(IntRangeType::class)]
 #[CoversClass(AbstractArrayVoType::class)]
-#[CoversClass(IntRangeCodec::class)]
 #[UsesClass(TypeRegistrar::class)]
 final class PrimitiveTypesTest extends TestCase
 {

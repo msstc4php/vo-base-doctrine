@@ -20,8 +20,6 @@ use MSSTC4PHP\ValueObject\Doctrine\Odm\TypeRegistrar;
 use MSSTC4PHP\ValueObject\Geo\GeoCoordinates;
 use MSSTC4PHP\ValueObject\Geo\Latitude;
 use MSSTC4PHP\ValueObject\Geo\Longitude;
-use MSSTC4PHP\ValueObject\Payload\DateRangeCodec;
-use MSSTC4PHP\ValueObject\Payload\GeoCoordinatesCodec;
 use MSSTC4PHP\ValueObject\Temporal\DateRange;
 use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -31,10 +29,8 @@ use PHPUnit\Framework\TestCase;
 
 #[CoversClass(BrickMoneyType::class)]
 #[CoversClass(DateRangeType::class)]
-#[CoversClass(DateRangeCodec::class)]
 #[CoversClass(GeoCoordinatesType::class)]
 #[CoversClass(AbstractArrayVoType::class)]
-#[CoversClass(GeoCoordinatesCodec::class)]
 #[UsesClass(TypeRegistrar::class)]
 final class AsymmetryFixTest extends TestCase
 {

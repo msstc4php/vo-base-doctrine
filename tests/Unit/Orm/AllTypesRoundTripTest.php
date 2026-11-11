@@ -75,8 +75,6 @@ use MSSTC4PHP\ValueObject\Network\Uri;
 use MSSTC4PHP\ValueObject\Network\Url;
 use MSSTC4PHP\ValueObject\Network\UrlPath;
 use MSSTC4PHP\ValueObject\Network\UrlScheme;
-use MSSTC4PHP\ValueObject\Payload\DateRangeCodec;
-use MSSTC4PHP\ValueObject\Payload\GeoCoordinatesCodec;
 use MSSTC4PHP\ValueObject\Temporal\DateRange;
 use MSSTC4PHP\ValueObject\Temporal\Duration;
 use MSSTC4PHP\ValueObject\Temporal\TimeOfDay;
@@ -95,7 +93,6 @@ use RuntimeException;
 #[CoversClass(ClassStringType::class)]
 #[CoversClass(CreditCardNumberType::class)]
 #[CoversClass(DateRangeType::class)]
-#[CoversClass(DateRangeCodec::class)]
 #[CoversClass(DecimalType::class)]
 #[CoversClass(DurationType::class)]
 #[CoversClass(IbanType::class)]
@@ -105,7 +102,6 @@ use RuntimeException;
 #[CoversClass(EmailAddressType::class)]
 #[CoversClass(GeoCoordinatesType::class)]
 #[CoversClass(AbstractJsonVoType::class)]
-#[CoversClass(GeoCoordinatesCodec::class)]
 #[CoversClass(HexColorType::class)]
 #[CoversClass(HostnameType::class)]
 #[CoversClass(IpAddressType::class)]

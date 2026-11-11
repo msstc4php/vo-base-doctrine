@@ -18,7 +18,6 @@ use MSSTC4PHP\ValueObject\Geo\GeoCoordinates;
 use MSSTC4PHP\ValueObject\Identity\EmailAddress;
 use MSSTC4PHP\ValueObject\Identity\Uuid;
 use MSSTC4PHP\ValueObject\Network\Port;
-use MSSTC4PHP\ValueObject\Payload\GeoCoordinatesCodec;
 use Override;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -30,7 +29,6 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(AbstractIntVoType::class)]
 #[CoversClass(GeoCoordinatesType::class)]
 #[CoversClass(AbstractArrayVoType::class)]
-#[CoversClass(GeoCoordinatesCodec::class)]
 #[CoversClass(TypeRegistrar::class)]
 #[UsesClass(UuidType::class)]
 final class TypeRoundTripTest extends TestCase

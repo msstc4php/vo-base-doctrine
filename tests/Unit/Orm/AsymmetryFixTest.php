@@ -22,10 +22,6 @@ use MSSTC4PHP\ValueObject\Doctrine\Orm\IntRangeType;
 use MSSTC4PHP\ValueObject\Geo\GeoCoordinates;
 use MSSTC4PHP\ValueObject\Geo\Latitude;
 use MSSTC4PHP\ValueObject\Geo\Longitude;
-use MSSTC4PHP\ValueObject\Payload\BoundedStringCodec;
-use MSSTC4PHP\ValueObject\Payload\DateRangeCodec;
-use MSSTC4PHP\ValueObject\Payload\GeoCoordinatesCodec;
-use MSSTC4PHP\ValueObject\Payload\IntRangeCodec;
 use MSSTC4PHP\ValueObject\Primitive\BoundedString;
 use MSSTC4PHP\ValueObject\Primitive\IntRange;
 use MSSTC4PHP\ValueObject\Temporal\DateRange;
@@ -36,14 +32,10 @@ use PHPUnit\Framework\TestCase;
 
 #[CoversClass(BrickMoneyType::class)]
 #[CoversClass(DateRangeType::class)]
-#[CoversClass(DateRangeCodec::class)]
 #[CoversClass(GeoCoordinatesType::class)]
-#[CoversClass(BoundedStringCodec::class)]
-#[CoversClass(IntRangeCodec::class)]
 #[CoversClass(BoundedStringType::class)]
 #[CoversClass(IntRangeType::class)]
 #[CoversClass(AbstractJsonVoType::class)]
-#[CoversClass(GeoCoordinatesCodec::class)]
 final class AsymmetryFixTest extends TestCase
 {
     private SQLitePlatform $platform;
