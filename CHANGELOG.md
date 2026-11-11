@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.0 - 2026-11-11
+
+First stable release: from here on a breaking change needs 2.0. The Doctrine type names (`vo_*`) and the stored
+formats are part of that promise.
+
+- Requires `msstc4php/vo-base` `^1.0`. No code changes.
+
 ## 0.5.0 - 2026-11-09
 
 **Changed (BC):** the package is renamed to the convention of third-party libraries with framework add-ons.

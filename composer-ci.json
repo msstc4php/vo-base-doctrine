@@ -22,7 +22,7 @@
     ],
     "require": {
         "php": ">=8.4",
-        "msstc4php/vo-base": "^0.4"
+        "msstc4php/vo-base": "^1.0"
     },
     "require-dev": {
         "brick/math": "^0.15 || ^0.16 || ^0.17 || ^0.18 || ^0.19 || ^0.20 || ^1.0",

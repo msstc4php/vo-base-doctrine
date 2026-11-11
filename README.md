@@ -17,7 +17,7 @@ Neither this package nor the core is on Packagist yet, so register both GitHub r
         { "type": "vcs", "url": "https://github.com/msstc4php/vo-base-doctrine" }
     ],
     "require": {
-        "msstc4php/vo-base-doctrine": "^0.5"
+        "msstc4php/vo-base-doctrine": "^1.0"
     }
 }
 ```
