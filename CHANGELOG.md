@@ -5,6 +5,8 @@
 - Requires `msstc4php/vo-base` `^1.1`. The composite payload codecs now come from the core
   (`MSSTC4PHP\ValueObject\Payload`), shared with every framework bridge; the `@internal` `Shared\Payload` copies are
   gone. Stored formats are unchanged.
+- Reading is stricter through the core codecs: a `DateRange` boundary must be an ISO 8601 instant with an offset (rows
+  written by this package always are; hand-written rows like `"now"` or a wall time without offset now fail loudly).
 
 ## 1.0.0 - 2026-11-11
 
