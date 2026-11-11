@@ -6,9 +6,9 @@ namespace MSSTC4PHP\ValueObject\Doctrine\Orm;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use InvalidArgumentException;
-use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\GeoCoordinatesCodec;
-use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\PayloadCodec;
 use MSSTC4PHP\ValueObject\Geo\GeoCoordinates;
+use MSSTC4PHP\ValueObject\Payload\GeoCoordinatesCodec;
+use MSSTC4PHP\ValueObject\Payload\PayloadCodec;
 use Override;
 
 /**

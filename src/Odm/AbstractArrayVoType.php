@@ -8,7 +8,7 @@ use Doctrine\ODM\MongoDB\Types\ClosureToPHP;
 use Doctrine\ODM\MongoDB\Types\Type;
 use InvalidArgumentException;
 use MSSTC4PHP\ValueObject\Contract\ValueObject;
-use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\PayloadCodec;
+use MSSTC4PHP\ValueObject\Payload\PayloadCodec;
 use Override;
 
 /**

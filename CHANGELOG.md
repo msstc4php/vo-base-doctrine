@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0 - 2026-11-11
+
+- Requires `msstc4php/vo-base` `^1.1`. The composite payload codecs now come from the core
+  (`MSSTC4PHP\ValueObject\Payload`), shared with every framework bridge; the `@internal` `Shared\Payload` copies are
+  gone. Stored formats are unchanged.
+
 ## 1.0.0 - 2026-11-11
 
 First stable release: from here on a breaking change needs 2.0. The Doctrine type names (`vo_*`) and the stored

@@ -7,9 +7,10 @@ Project-specific choices that look arbitrary until you know why.
 `Orm` and `Odm` hold near-identical class names with near-identical bodies. That
 duplication is the design: a shared base would be a horizontal edge between the
 branches, which deptrac forbids and which the CI isolation jobs exist to keep
-impossible. Only genuinely framework-free logic goes to `Shared` — such as the
-`Shared\Payload` codecs, which define each composite payload once so the two
-branches cannot drift; the per-branch bases only add the transport.
+impossible. Only genuinely framework-free logic goes to `Shared` (the money
+helpers). Logic every framework bridge needs goes to the core instead: the
+composite payload codecs live in `MSSTC4PHP\ValueObject\Payload` since 1.1.0;
+the per-branch bases only add the transport.
 
 ## Shape differences between the branches
 

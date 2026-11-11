@@ -9,7 +9,7 @@
 - `AbstractTextVoType` (CLOB) for large text VOs — `Base64String`, `JsonString`.
 - `AbstractIntVoType` for `PositiveInt`, `NonNegativeInt` and `Port`.
 - `AbstractJsonVoType` (one JSON CLOB column) for `GeoCoordinates`, `DateRange`, `IntRange`, `BoundedString`; the
-  payload comes from the shared `Shared\Payload` codec. Each concrete type re-declares `convertToPHPValue()` with
+  payload comes from the core's `Payload` codec. Each concrete type re-declares `convertToPHPValue()` with
   its narrow return type, which keeps the public signatures of 0.3 (Roave BC check).
 - Standalone: `PercentageType` (float), `BrickMoneyType`.
 - `TypeRegistrar::registerAll()` — idempotent via `Type::hasType`; `types()`

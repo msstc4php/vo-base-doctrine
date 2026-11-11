@@ -6,8 +6,8 @@ namespace MSSTC4PHP\ValueObject\Doctrine\Orm;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use InvalidArgumentException;
-use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\BoundedStringCodec;
-use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\PayloadCodec;
+use MSSTC4PHP\ValueObject\Payload\BoundedStringCodec;
+use MSSTC4PHP\ValueObject\Payload\PayloadCodec;
 use MSSTC4PHP\ValueObject\Primitive\BoundedString;
 use Override;
 

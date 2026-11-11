@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace MSSTC4PHP\ValueObject\Doctrine\Odm;
 
 use InvalidArgumentException;
-use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\BoundedStringCodec;
-use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\PayloadCodec;
+use MSSTC4PHP\ValueObject\Payload\BoundedStringCodec;
+use MSSTC4PHP\ValueObject\Payload\PayloadCodec;
 use MSSTC4PHP\ValueObject\Primitive\BoundedString;
 use Override;
 

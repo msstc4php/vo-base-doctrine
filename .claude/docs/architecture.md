@@ -42,7 +42,6 @@ job, not its.
 ```
 src/
 ├── Shared/Money/   MoneyScale, MoneyContextRouter, MoneyMappingException
-├── Shared/Payload/ PayloadCodec + one codec per composite VO (GeoCoordinates, DateRange, IntRange, BoundedString)
 ├── Orm/            38 DBAL types, 4 abstract bases (String, Text, Int, Json), TypeRegistrar
 │   └── Embeddable/ MoneyAmount, PreciseMoneyAmount
 └── Odm/            38 ODM types, 3 abstract bases (String, Int, Array), TypeRegistrar
@@ -50,6 +49,7 @@ src/
 ```
 
 Composite value objects store the same payload in both branches: a JSON column in ORM (`AbstractJsonVoType`), a
-sub-document in ODM (`AbstractArrayVoType`). The payload shape and its validation live once, in the
-`Shared/Payload` codec, so the branches cannot drift; the bases only handle null, the class check and the transport
+sub-document in ODM (`AbstractArrayVoType`). The payload shape and its validation live once, in the core's
+`MSSTC4PHP\ValueObject\Payload` codecs (moved there from `Shared/Payload` in 1.1.0, so every framework bridge stores
+composites the same way), so the branches cannot drift; the bases only handle null, the class check and the transport
 (JSON text vs BSON array). `PortType` is a plain `AbstractIntVoType` subclass in both branches.

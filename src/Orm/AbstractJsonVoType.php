@@ -9,7 +9,7 @@ use Doctrine\DBAL\Types\Type;
 use InvalidArgumentException;
 use JsonException;
 use MSSTC4PHP\ValueObject\Contract\ValueObject;
-use MSSTC4PHP\ValueObject\Doctrine\Shared\Payload\PayloadCodec;
+use MSSTC4PHP\ValueObject\Payload\PayloadCodec;
 use Override;
 
 /**
