@@ -41,8 +41,8 @@ final class SchemaDeclarationTest extends TestCase
         yield 'vo_domain_name' => ['vo_domain_name', 'VARCHAR(253)'];
         yield 'vo_duration' => ['vo_duration', 'VARCHAR(40)'];
         yield 'vo_email_address' => ['vo_email_address', 'VARCHAR(255)'];
-        yield 'vo_geo_coordinates' => ['vo_geo_coordinates', 'CLOB'];
         yield 'vo_eui64' => ['vo_eui64', 'VARCHAR(23)'];
+        yield 'vo_geo_coordinates' => ['vo_geo_coordinates', 'CLOB'];
         yield 'vo_hex_color' => ['vo_hex_color', 'VARCHAR(7)'];
         yield 'vo_hostname' => ['vo_hostname', 'VARCHAR(253)'];
         yield 'vo_iban' => ['vo_iban', 'VARCHAR(34)'];
