@@ -6,6 +6,10 @@
   `StringConvertible` VO to VARCHAR. A concrete type only names its VO class
   and optionally a column length. **DBAL 4:** do not implement `getName()` or
   `requiresSQLCommentHint()` — both removed; type identity is the registered name.
+  On write it accepts only an instance of `valueObjectClass()` (ORM and ODM): a VO of another class
+  (`InvalidArgumentException`, message names the classes only) used to be written and fail only on read.
+  A corrupt stored value throws the VO's own `InvalidValueObjectException` on read, deliberately not wrapped in
+  DBAL's `ConversionException`, whose factories put the value into the message.
 - `AbstractTextVoType` (CLOB) for large text VOs — `Base64String`, `JsonString`.
 - `AbstractIntVoType` for `PositiveInt`, `NonNegativeInt` and `Port`.
 - `AbstractJsonVoType` (one JSON CLOB column) for `GeoCoordinates`, `DateRange`, `IntRange`, `BoundedString`; the

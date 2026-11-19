@@ -36,8 +36,10 @@ abstract class AbstractStringVoType extends Type
             return null;
         }
 
-        if (!$value instanceof StringConvertible) {
-            throw new InvalidArgumentException(\sprintf('Expected %s, got %s.', StringConvertible::class, \get_debug_type($value)));
+        // A value object of another class would be written and then fail only on read.
+        $class = $this->valueObjectClass();
+        if (!$value instanceof $class) {
+            throw new InvalidArgumentException(\sprintf('Expected %s, got %s.', $class, \get_debug_type($value)));
         }
 
         return (string) $value;

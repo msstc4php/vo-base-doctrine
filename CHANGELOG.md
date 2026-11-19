@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Every string type (`Orm\AbstractStringVoType`, `Odm\AbstractStringVoType`, and so every bridge built on them)
+  refuses on write a value object of another class than its own, with an `InvalidArgumentException` that names the
+  classes only; before, such a value was written and failed only when read back. Stored values that no longer parse
+  still throw the value object's `InvalidValueObjectException` (not wrapped in DBAL's `ConversionException`, whose
+  messages carry the value).
 - New types `vo_eui64` and `vo_oui` (ORM and ODM) for the core's `Network\Eui64` and `Network\Oui`. Requires
   `msstc4php/vo-base` `^1.2`.
 

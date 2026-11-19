@@ -84,6 +84,19 @@ final class TypeRoundTripTest extends TestCase
         Type::getType(EmailAddressType::NAME)->convertToDatabaseValue('not-a-vo', $this->platform);
     }
 
+    public function testAValueObjectOfAnotherClassIsRefusedOnWrite(): void
+    {
+        $uuid = Uuid::from('018f8c1e-7b2a-7cde-8f01-2a3b4c5d6e7f');
+
+        try {
+            Type::getType(EmailAddressType::NAME)->convertToDatabaseValue($uuid, $this->platform);
+            self::fail('A foreign value object was written.');
+        } catch (InvalidArgumentException $exception) {
+            self::assertSame(\sprintf('Expected %s, got %s.', EmailAddress::class, Uuid::class), $exception->getMessage());
+            self::assertStringNotContainsString((string) $uuid, $exception->getMessage());
+        }
+    }
+
     public function testPortRoundTripsAsInteger(): void
     {
         $type = Type::getType(PortType::NAME);
