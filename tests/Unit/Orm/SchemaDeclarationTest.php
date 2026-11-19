@@ -42,6 +42,7 @@ final class SchemaDeclarationTest extends TestCase
         yield 'vo_duration' => ['vo_duration', 'VARCHAR(40)'];
         yield 'vo_email_address' => ['vo_email_address', 'VARCHAR(255)'];
         yield 'vo_geo_coordinates' => ['vo_geo_coordinates', 'CLOB'];
+        yield 'vo_eui64' => ['vo_eui64', 'VARCHAR(23)'];
         yield 'vo_hex_color' => ['vo_hex_color', 'VARCHAR(7)'];
         yield 'vo_hostname' => ['vo_hostname', 'VARCHAR(253)'];
         yield 'vo_iban' => ['vo_iban', 'VARCHAR(34)'];
@@ -56,6 +57,7 @@ final class SchemaDeclarationTest extends TestCase
         yield 'vo_money' => ['vo_money', 'VARCHAR(40)'];
         yield 'vo_non_empty_string' => ['vo_non_empty_string', 'VARCHAR(255)'];
         yield 'vo_non_negative_int' => ['vo_non_negative_int', 'INTEGER'];
+        yield 'vo_oui' => ['vo_oui', 'VARCHAR(8)'];
         yield 'vo_percentage' => ['vo_percentage', 'DOUBLE PRECISION'];
         yield 'vo_phone_number' => ['vo_phone_number', 'VARCHAR(16)'];
         yield 'vo_port' => ['vo_port', 'INTEGER'];

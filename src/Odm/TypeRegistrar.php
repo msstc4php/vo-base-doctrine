@@ -24,6 +24,8 @@ final class TypeRegistrar
         Ipv4AddressType::NAME => Ipv4AddressType::class,
         Ipv6AddressType::NAME => Ipv6AddressType::class,
         MacAddressType::NAME => MacAddressType::class,
+        Eui64Type::NAME => Eui64Type::class,
+        OuiType::NAME => OuiType::class,
         HostnameType::NAME => HostnameType::class,
         DomainNameType::NAME => DomainNameType::class,
         UrlType::NAME => UrlType::class,

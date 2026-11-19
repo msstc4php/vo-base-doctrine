@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- New types `vo_eui64` and `vo_oui` (ORM and ODM) for the core's `Network\Eui64` and `Network\Oui`. Requires
+  `msstc4php/vo-base` `^1.2`.
+
 ## 1.1.0 - 2026-11-11
 
 - Requires `msstc4php/vo-base` `^1.1`. The composite payload codecs now come from the core

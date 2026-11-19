@@ -23,6 +23,7 @@ use MSSTC4PHP\ValueObject\Doctrine\Odm\DecimalType;
 use MSSTC4PHP\ValueObject\Doctrine\Odm\DomainNameType;
 use MSSTC4PHP\ValueObject\Doctrine\Odm\DurationType;
 use MSSTC4PHP\ValueObject\Doctrine\Odm\EmailAddressType;
+use MSSTC4PHP\ValueObject\Doctrine\Odm\Eui64Type;
 use MSSTC4PHP\ValueObject\Doctrine\Odm\GeoCoordinatesType;
 use MSSTC4PHP\ValueObject\Doctrine\Odm\HexColorType;
 use MSSTC4PHP\ValueObject\Doctrine\Odm\HostnameType;
@@ -34,6 +35,7 @@ use MSSTC4PHP\ValueObject\Doctrine\Odm\Ipv6AddressType;
 use MSSTC4PHP\ValueObject\Doctrine\Odm\JsonStringType;
 use MSSTC4PHP\ValueObject\Doctrine\Odm\LocaleType;
 use MSSTC4PHP\ValueObject\Doctrine\Odm\MacAddressType;
+use MSSTC4PHP\ValueObject\Doctrine\Odm\OuiType;
 use MSSTC4PHP\ValueObject\Doctrine\Odm\PhoneNumberType;
 use MSSTC4PHP\ValueObject\Doctrine\Odm\PortType;
 use MSSTC4PHP\ValueObject\Doctrine\Odm\SemVerType;
@@ -62,12 +64,14 @@ use MSSTC4PHP\ValueObject\Identity\EmailAddress;
 use MSSTC4PHP\ValueObject\Identity\Uuid;
 use MSSTC4PHP\ValueObject\Network\Cidr;
 use MSSTC4PHP\ValueObject\Network\DomainName;
+use MSSTC4PHP\ValueObject\Network\Eui64;
 use MSSTC4PHP\ValueObject\Network\Hostname;
 use MSSTC4PHP\ValueObject\Network\IpAddress;
 use MSSTC4PHP\ValueObject\Network\IpRange;
 use MSSTC4PHP\ValueObject\Network\Ipv4Address;
 use MSSTC4PHP\ValueObject\Network\Ipv6Address;
 use MSSTC4PHP\ValueObject\Network\MacAddress;
+use MSSTC4PHP\ValueObject\Network\Oui;
 use MSSTC4PHP\ValueObject\Network\Port;
 use MSSTC4PHP\ValueObject\Network\Uri;
 use MSSTC4PHP\ValueObject\Network\Url;
@@ -107,6 +111,8 @@ use RuntimeException;
 #[CoversClass(Ipv6AddressType::class)]
 #[CoversClass(LocaleType::class)]
 #[CoversClass(MacAddressType::class)]
+#[CoversClass(Eui64Type::class)]
+#[CoversClass(OuiType::class)]
 #[CoversClass(PhoneNumberType::class)]
 #[CoversClass(PortType::class)]
 #[CoversClass(AbstractIntVoType::class)]
@@ -137,6 +143,8 @@ final class AllTypesRoundTripTest extends TestCase
         yield 'ipv4' => [Ipv4AddressType::NAME, Ipv4Address::from('192.168.0.1')];
         yield 'ipv6' => [Ipv6AddressType::NAME, Ipv6Address::from('::1')];
         yield 'mac' => [MacAddressType::NAME, MacAddress::from('aa:bb:cc:dd:ee:ff')];
+        yield 'eui64' => [Eui64Type::NAME, Eui64::from('00:11:22:ff:fe:33:44:55')];
+        yield 'oui' => [OuiType::NAME, Oui::from('aa:bb:cc')];
         yield 'hostname' => [HostnameType::NAME, Hostname::from('example.com')];
         yield 'domain' => [DomainNameType::NAME, DomainName::from('example.com')];
         yield 'url' => [UrlType::NAME, Url::from('https://example.com/a')];

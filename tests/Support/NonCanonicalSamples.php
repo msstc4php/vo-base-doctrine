@@ -28,12 +28,14 @@ use MSSTC4PHP\ValueObject\Identity\EmailAddress;
 use MSSTC4PHP\ValueObject\Identity\Uuid;
 use MSSTC4PHP\ValueObject\Network\Cidr;
 use MSSTC4PHP\ValueObject\Network\DomainName;
+use MSSTC4PHP\ValueObject\Network\Eui64;
 use MSSTC4PHP\ValueObject\Network\Hostname;
 use MSSTC4PHP\ValueObject\Network\IpAddress;
 use MSSTC4PHP\ValueObject\Network\IpRange;
 use MSSTC4PHP\ValueObject\Network\Ipv4Address;
 use MSSTC4PHP\ValueObject\Network\Ipv6Address;
 use MSSTC4PHP\ValueObject\Network\MacAddress;
+use MSSTC4PHP\ValueObject\Network\Oui;
 use MSSTC4PHP\ValueObject\Network\Port;
 use MSSTC4PHP\ValueObject\Network\Uri;
 use MSSTC4PHP\ValueObject\Network\Url;
@@ -90,6 +92,7 @@ final class NonCanonicalSamples
             'vo_duration' => Duration::from('P1Y2M3DT4H5M6S'),
             'vo_email_address' => EmailAddress::from('a+tag@sub.example.co.uk'),
             'vo_geo_coordinates' => new GeoCoordinates(Latitude::from(-89.999999), Longitude::from(179.999999)),
+            'vo_eui64' => Eui64::from('00-11-22-FF-FE-33-44-55'),
             'vo_hex_color' => HexColor::from('#abc'),
             'vo_hostname' => Hostname::from('sub.example.co.uk'),
             'vo_iban' => Iban::from('MT84MALT011000012345MTLCAST001S'),
@@ -105,6 +108,7 @@ final class NonCanonicalSamples
             'vo_money' => Money::of('1.2345', 'USD', new CustomContext(4)),
             'vo_non_empty_string' => NonEmptyString::from(' мир 😀 '),
             'vo_non_negative_int' => NonNegativeInt::from(0),
+            'vo_oui' => Oui::from('AA-BB-CC'),
             'vo_percentage' => Percentage::from(33.333333),
             'vo_phone_number' => PhoneNumber::from('+442071838750'),
             'vo_port' => Port::from(65535),
