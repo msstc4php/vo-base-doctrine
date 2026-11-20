@@ -8,8 +8,9 @@ use MSSTC4PHP\ValueObject\Finance\CreditCardNumber;
 use Override;
 
 /**
- * @deprecated since 1.3, store MSSTC4PHP\ValueObject\Financial\Card\PaymentCardNumber from msstc4php/vo-finance
- *             instead; removed no earlier than 2.0. Behaviour is unchanged.
+ * @deprecated since vo-base-doctrine 1.3 (following vo-base 1.3), store
+ *             MSSTC4PHP\ValueObject\Financial\Card\PaymentCardNumber from msstc4php/vo-finance instead; removed no
+ *             earlier than 2.0. Behaviour is unchanged.
  */
 final class CreditCardNumberType extends AbstractStringVoType
 {
