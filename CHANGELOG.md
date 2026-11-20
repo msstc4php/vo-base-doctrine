@@ -5,6 +5,10 @@
 - `Orm\CreditCardNumberType` and `Odm\CreditCardNumberType` (`vo_credit_card_number`) are `@deprecated`, following
   `Finance\CreditCardNumber` in `msstc4php/vo-base` 1.3; use `PaymentCardNumber` from `msstc4php/vo-finance`. Behaviour
   is unchanged, there is no runtime deprecation notice, and removal is no earlier than 2.0.
+- Upgrade note: with `msstc4php/vo-base` 1.3, `Finance\Iban` checks each country's registered length and format, and
+  `vo_iban` reads with `Iban::from()`, so a stored IBAN that breaks its country's format throws `InvalidIbanException`
+  on hydration. Before deploying, run `Iban::tryFrom()` over the stored values; the rows that give null were never
+  valid IBANs and need correcting.
 
 ## 1.2.0 - 2026-11-20
 
