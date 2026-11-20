@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- `Orm\CreditCardNumberType` and `Odm\CreditCardNumberType` (`vo_credit_card_number`) are `@deprecated`, following
+  `Finance\CreditCardNumber` in `msstc4php/vo-base` 1.3; use `PaymentCardNumber` from `msstc4php/vo-finance`. Behaviour
+  is unchanged, there is no runtime deprecation notice, and removal is no earlier than 2.0.
+
 ## 1.2.0 - 2026-11-20
 
 - Every string type (`Orm\AbstractStringVoType`, `Odm\AbstractStringVoType`, and so every bridge built on them)
