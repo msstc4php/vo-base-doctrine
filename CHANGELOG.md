@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.2.0 - 2026-11-20
 
 - Every string type (`Orm\AbstractStringVoType`, `Odm\AbstractStringVoType`, and so every bridge built on them)
   refuses on write a value object of another class than its own, with an `InvalidArgumentException` that names the
