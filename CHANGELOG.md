@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.3.0 - 2026-11-22
 
 - `Orm\CreditCardNumberType` and `Odm\CreditCardNumberType` (`vo_credit_card_number`) are `@deprecated`, following
   `Finance\CreditCardNumber` in `msstc4php/vo-base` 1.3; use `PaymentCardNumber` from `msstc4php/vo-finance`. Behaviour
